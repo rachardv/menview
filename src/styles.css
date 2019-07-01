@@ -1,0 +1,84 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './assets/bootstrap.min.css';
+
+html {
+    font-size: 1em;
+    line-height: 1em;
+}
+
+body {
+    color: black; /* font-color */
+}
+
+nav, .navbar, .navbar-expand, .navbar-dark {
+    position: fixed;
+    padding: 0em 0.5em;
+    margin: 0em;
+    top: 0em;
+    width: 100%;
+    z-index: 1; /* navbar takes precedence over background */
+    min-height: 4em;
+}
+
+.jumbotron, .container {
+    padding: 1em 0em;
+    margin-bottom: 0em;
+}
+
+footer {
+    color: #CCC;
+    opacity: 0.5;
+    text-align: center;
+    width: 100%;
+    font-size: 0.8em;
+    padding: 1em;
+}
+
+#site-title {
+    margin-right: 1em;
+}
+
+#site-title.disabled {
+    color: white;
+    opacity: 0.5;
+    transition: 0ms;
+}
+
+.nav-item, .nav-link, .nav-item:visited, .nav-link:visited {
+    transition: 200ms;
+    margin: 0em 0.5em;
+    border-radius: 0.3em;
+    padding: 0.75em 0.5em;
+    text-align: center;
+    min-width: 6em;
+}
+
+.nav-item:hover, .nav-link:hover {
+    background-color: #1B2127;
+}
+
+.nav-highlight {
+    background-color: #e9ecef !important;
+    color: #1A1A1D !important;
+}
+
+.code {
+    /* catches nested <code> elements */
+    color: #e83e8c;
+    word-break: break-word;
+}
+
+.padding-override {
+    padding: 0em !important;
+}
+
+.top-offset {
+    margin-top: 4em;
+}
+
+.heading-separator {
+    width: 100%;
+    border-bottom: 1px solid #AAAAAA;
+    padding-bottom: 0.1em;
+}

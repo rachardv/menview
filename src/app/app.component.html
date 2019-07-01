@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav nav-item-list">
+      <a id="site-title" [ngClass]="{'disabled': isActive('/')}" class="nav-item nav-link" routerLink="/"><b>Menview</b></a>
+      <a class="nav-item nav-link" [ngClass]="{'nav-highlight': isActive('/')}" routerLink="/">Home</a>
+      <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="currentUser" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="jumbotron nopadding bg-light" [ngClass]="{'padding-override' : isActive('/')}">
+  <div class="container nopadding top-offset" [ngClass]="{'padding-override' : isActive('/')}">
+      <router-outlet></router-outlet>
+  </div>
+</div>
