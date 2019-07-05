@@ -1,24 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import './assets/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em;
+}
 
 html {
     font-size: 1em;
     line-height: 1em;
 }
 
-body {
-    color: black; /* font-color */
+.jumbotron {
+    background-color: white !important;
 }
 
-nav, .navbar, .navbar-expand, .navbar-dark {
-    position: fixed;
+body {
+    color: black;
+    /* font-color */
+}
+
+.c1 {
+    color: #005A81;
+}
+
+.c2 {
+    color: #00ADE6;
+}
+
+.c3 {
+    color: #16FFFF;
+}
+
+.c4 {
+    color: #FF9500;
+}
+
+nav, .navbar, .navbar-expand {
+    background-color: #FAFAFA;
     padding: 0em 0.5em;
     margin: 0em;
     top: 0em;
     width: 100%;
-    z-index: 1; /* navbar takes precedence over background */
-    min-height: 4em;
+    z-index: 1;
+    position: fixed;
+    box-shadow: 0px 4px 2px -2px #DEDEDE;
+}
+
+.navbar-line-height {
+    line-height: 1em;
+}
+
+.navbar-item {
+    background-color: #00ADE6;
+    border-radius: 2em;
+    color: white !important;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 0em 0.5em;
+    border-radius: 2em;
+    min-width: 6em;
+    padding: 0.5em 0.5em;
+    position: fixed;
+    right: 1em;
+    transition: 200ms;
+    text-align: center;
+    transition: 100ms;
+}
+
+.navbar-item:hover, .navbar-item:active {
+    background-color: #005A81;
+}
+
+.navbar-dark, .navbar-nav, .nav-item-list {
+    background-color: #FAFAFA;
+    height: 100%;
+    line-height: 1em;
+    width: 100%;
+    padding: 0.5em;
 }
 
 .jumbotron, .container {
@@ -37,48 +98,11 @@ footer {
 
 #site-title {
     margin-right: 1em;
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
 }
 
 #site-title.disabled {
-    color: white;
-    opacity: 0.5;
     transition: 0ms;
-}
-
-.nav-item, .nav-link, .nav-item:visited, .nav-link:visited {
-    transition: 200ms;
-    margin: 0em 0.5em;
-    border-radius: 0.3em;
-    padding: 0.75em 0.5em;
-    text-align: center;
-    min-width: 6em;
-}
-
-.nav-item:hover, .nav-link:hover {
-    background-color: #1B2127;
-}
-
-.nav-highlight {
-    background-color: #e9ecef !important;
-    color: #1A1A1D !important;
-}
-
-.code {
-    /* catches nested <code> elements */
-    color: #e83e8c;
-    word-break: break-word;
-}
-
-.padding-override {
-    padding: 0em !important;
-}
-
-.top-offset {
-    margin-top: 4em;
-}
-
-.heading-separator {
-    width: 100%;
-    border-bottom: 1px solid #AAAAAA;
-    padding-bottom: 0.1em;
 }

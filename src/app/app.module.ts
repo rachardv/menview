@@ -12,11 +12,13 @@ import {
   JwtInterceptor,
   ErrorInterceptor
 } from './_helpers/';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
