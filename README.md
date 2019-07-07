@@ -18,6 +18,22 @@ You can now test the site in your web browser at `http://localhost:4201/`
 To stop the container after you're done using it, enter:
 2. `docker-compose stop`
 
+To instantiate the database with data:
+
+1. get the database container up and running via `docker-compose up -d --build`
+
+2. run a seperate bash window in the menview directory 
+
+3. type `docker cp dump.sql menview_db_1:dump.sql` followed by `docker exec -it menview_db_1 psql -U admin -W menviewdb -f dump.sql`
+
+4. type the password "secret" when promted 
+
+Note that you can verify if you have successfully added the data by running: `docker exec -it menview_db_1 psql -U admin -W menviewdb -f dump.sql` and checking if the users table exists via `\dt`.
+
+The password is again "secret"
+
+Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the databse volume and remove any data. 
+
 
 Troubleshooting
 ===============
