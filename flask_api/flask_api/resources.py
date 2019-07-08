@@ -27,12 +27,12 @@ class RestaurantResource(Resource):
     @marshal_with(restaurant_fields)
     def get(self, name):
         restaurant = session.query(Restaurant).filter(Restuarant.name == name).first()
-        if not note:
+        if not restaurant:
             abort(404, message="restaurant {} doesn't exist".format(name))
         return restaurant
 
     def delete(self, name):
-        note = session.query(Restaurant).filter(Restaurant.name == name).first()
+        restaurant = session.query(Restaurant).filter(Restaurant.name == name).first()
         if not restaurant:
             abort(404, message="restaurant {} doesn't exist".format(name))
         session.delete(restaurant)
