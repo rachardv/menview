@@ -34,6 +34,19 @@ The password is again "secret"
 
 Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the databse volume and remove any data. 
 
+To run flask-api:
+
+1. `cd flask_api/flask_api`
+
+2. Create a dummy database: `python3 models.py`
+
+3. `cd ..`
+
+4. `docker-compose up`
+
+5. `visit http:0.0.0.0:5000` You should be presented with empty brackets. Post requests can be made with curl to this address. 
+
+Steps 3-4  be ran when developing by running `python3 flask_api/flask_api/api.py`
 
 Troubleshooting
 ===============
