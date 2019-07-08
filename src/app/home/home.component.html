@@ -1,1 +1,51 @@
-<input class="search-bar rounded" type="text" placeholder="Search for restaurants"/>
+<input class="search-bar rounded" type="text" placeholder="Search for restaurants" />
+
+
+<br><br>
+<agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType'>Loading...</agm-map>
+<br><br>
+
+<p>Select a restaurant below to begin!</p>
+
+<!-- rough *ngFor demos below for both restaurant and dish objects -->
+
+<div class="row">
+    <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
+        <ul style="padding: 0em; list-style-type: none;">
+            <li *ngFor="let restaurant of restaurantList">
+                <restaurant class="unselected" [ngClass]="{'selected': restaurant.name === message }"
+                    [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
+                    (messageEvent)="receiveMessage($event)">
+                </restaurant>
+            </li>
+        </ul>
+    </div>
+
+    <div *ngIf="menuActive" class="col">
+        <ul style="padding: 0em; list-style-type: none;">
+            <li *ngFor="let menuItem of menuItems">
+                <dish [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
+                    [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ex, tristique id eleifend sit amet, vulputate eu
+    erat. Nunc sodales aliquet nunc a pretium. Proin dictum eleifend elit, eget elementum erat lobortis vel. In dictum
+    nisi fermentum, sagittis nibh vel, gravida augue. Nam at enim placerat, rhoncus urna et, cursus ante. Aenean
+    pellentesque arcu velit, non congue turpis tincidunt quis. Praesent sollicitudin dolor leo. Vivamus lobortis
+    consequat mauris, eget suscipit risus porta quis. Quisque quam tellus, hendrerit a velit sit amet, euismod malesuada
+    magna. In tempus vulputate consequat. Maecenas sit amet luctus erat, sit amet aliquam massa.
+</p>
+
+<p>
+    Fusce pellentesque, mi sagittis tristique consequat, arcu justo pulvinar magna, eu suscipit augue tortor et eros.
+    Cras eu pharetra neque, ac aliquet orci. Vivamus felis turpis, dignissim sit amet purus a, mattis imperdiet sem.
+    Integer ex sem, fermentum quis nisl vel, congue porttitor eros. Sed tincidunt lorem elit, id porta sapien varius id.
+    Aenean porta maximus felis vel dignissim. Sed scelerisque mauris nec orci feugiat tristique. Nunc id varius sapien.
+    Nulla commodo enim a erat pretium ultricies. Ut lacinia eros finibus justo facilisis, id rhoncus purus bibendum.
+</p>
