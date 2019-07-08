@@ -44,7 +44,7 @@ To run flask-api:
 
 4. `docker-compose up`
 
-5. `visit http:0.0.0.0:5000` You should be presented with empty brackets. Post requests can be made with curl to this address. 
+5. `visit http:0.0.0.0:5000/restaurants/` You should be presented with empty brackets. Post requests can be made with curl to this address. 
 
 Steps 3-4  be ran when developing by running `python3 flask_api/flask_api/api.py`
 
