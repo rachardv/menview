@@ -1,0 +1,6 @@
+Flask==1.0.2
+Flask-RESTful==0.3.6
+Jinja2==2.9.6
+SQLAlchemy==1.1.13
+Werkzeug==0.14.1
+waitress
