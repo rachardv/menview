@@ -2,25 +2,25 @@
 
 
 <br><br>
-<agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType'>Loading...</agm-map>
-<br><br>
-
-<p>Select a restaurant below to begin!</p>
-
-<!-- rough *ngFor demos below for both restaurant and dish objects -->
-
-<div class="row">
-    <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
-        <ul style="padding: 0em; list-style-type: none;">
-            <li *ngFor="let restaurant of restaurantList">
-                <restaurant class="unselected" [ngClass]="{'selected': restaurant.name === message }"
-                    [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
-                    (messageEvent)="receiveMessage($event)">
-                </restaurant>
-            </li>
-        </ul>
+<agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+    <span>Loading...</span>
+    <!-- *ngFor="let marker of markers" -->
+    <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.long" [label]="r.name"
+        [opacity]="r.alpha" (markerClick)="getMarker(r)">
+    </agm-marker>
+</agm-map>
+<div *ngIf="selectedRestaurant" class="row rounded">
+    <div class="restaurant-view rounded">
+        <span class="restaurant-name">{{selectedRestaurant.name}}</span>
+        <span class="right-text">Dishes: {{selectedRestaurant.dishcount}}</span>
+        <hr class="divider">
+        <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.long}}</i></p>
     </div>
+</div>
 
+
+
+<!-- <div class="row">
     <div *ngIf="menuActive" class="col">
         <ul style="padding: 0em; list-style-type: none;">
             <li *ngFor="let menuItem of menuItems">
@@ -29,12 +29,9 @@
             </li>
         </ul>
     </div>
+</div> -->
 
-</div>
-
-
-
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ex, tristique id eleifend sit amet, vulputate eu
+<p style="margin-top: 1.5em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ex, tristique id eleifend sit amet, vulputate eu
     erat. Nunc sodales aliquet nunc a pretium. Proin dictum eleifend elit, eget elementum erat lobortis vel. In dictum
     nisi fermentum, sagittis nibh vel, gravida augue. Nam at enim placerat, rhoncus urna et, cursus ante. Aenean
     pellentesque arcu velit, non congue turpis tincidunt quis. Praesent sollicitudin dolor leo. Vivamus lobortis
