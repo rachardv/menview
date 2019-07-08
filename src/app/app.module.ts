@@ -4,7 +4,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+
+import { AgmCoreModule } from '@agm/core'; /* google maps for Angular */
+
+/* Home/Main Component */
+import {
+  HomeComponent,
+  DishComponent,
+  RestaurantComponent
+} from './home/';
 
 /* Helpers */
 import {
@@ -18,12 +26,17 @@ import { LoginComponent } from './login/login.component';
   declarations: [
     AppComponent,
     HomeComponent,
+    DishComponent,
+    RestaurantComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDfpSDY2JRmlLiTUI5tKUw1wiGyEGR1qys' /* registered to mikhelvin@hotmail.com -> please don't share this API key!! */
+    })
   ],
   providers: [
     Globals,
