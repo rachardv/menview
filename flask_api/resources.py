@@ -3,7 +3,7 @@ from models import Restaurant
 from db import session
 from datetime import datetime
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
-import pdb
+
 
 restaurant_fields = {
     'name': fields.String,
@@ -27,7 +27,6 @@ parser.add_argument('rating')
 class RestaurantResource(Resource):
     @marshal_with(restaurant_fields)
     def get(self, name):
-        pdb.set_trace()
         restaurant = session.query(Restaurant).filter(Restaurant.name == name).first()
         if not restaurant:
             abort(404, message="restaurant {} doesn't exist".format(name))
@@ -59,7 +58,6 @@ class RestaurantResource(Resource):
 class RestaurantListResource(Resource):
     @marshal_with(restaurant_fields)
     def get(self):
-        pdb.set_trace()
         restaurants = session.query(Restaurant).all()
         return restaurants
 
