@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-from sqlalchemy import Column
-from sqlalchemy import Integer
-from sqlalchemy import String
+from sqlalchemy import Column, Integer, ForeignKey, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
+
+
 
 # Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
 # DB_URI = 'sqlite:///./main.db'
@@ -22,6 +21,21 @@ class Restaurant(Base):
     description = Column(String(200))
     rating = Column(Integer)
 
+class User(Base):
+    __tablename__= 'users'
+    
+    username = Column(String(20), primary_key=True)
+    email = Column(String(50), unique=True, nullable=False)
+    password = Column(String(30), nullable=False)
+
+class Dish(Base):
+    __tablename__='dishes'
+    
+    dish_id = Column(Integer, primary_key=True)
+    name = Column(String(60), nullable=False)
+    description = Column(String(200))
+    restaurant_name = Column(String(30), ForeignKey("restaurants.name"), nullable=False)
+    
 
 if __name__ == "__main__":
 
