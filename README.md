@@ -34,6 +34,22 @@ The password is again "secret"
 
 Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the databse volume and remove any data. 
 
+Flask REST-API
+===============
+1. run `python3 ./flask_api/models.py` to instantiate an empty database with correct tables. (This is temporary)
+
+2. `visit http:0.0.0.0:5000/restaurants/` You should be presented with empty brackets. Post requests can be made with curl to this address. 
+
+3. 
+
+Note: To run separately, can be commented out of docker-compose and ran as `python3 ./flask_api/api.py`  (I reccomend this during development).
+
+Using Flask API
+===============
+
+1. `curl -d '{"name":"white spot", "rating":"3"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:5000/restaurants/`
+
+2. query via `0.0.0.0/restaurants/white spot` or similar GET request
 
 Troubleshooting
 ===============

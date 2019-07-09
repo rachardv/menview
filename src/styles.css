@@ -23,7 +23,7 @@ body {
 }
 
 .map-box {
-    height: 300px;
+    height: 400px;
 }
 
 .content-box {
@@ -130,6 +130,20 @@ footer {
     width: 100%;
     box-shadow: none;
     border: 1px solid #CCCCCC;
+}
+
+.restaurant-name, .dish-name {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 0em;
+}
+
+.restaurant-view {
+    padding: 1em;
+    margin: 1em;
+    width: 100%;
+    box-shadow: 0px 1px 1px 2px #CCCCCC;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
 }
 
 input:focus {

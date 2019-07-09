@@ -10,7 +10,7 @@ import { restaurants, menus } from './sampleData'
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [ DishComponent, RestaurantComponent ]
+  providers: [DishComponent, RestaurantComponent]
 })
 export class HomeComponent implements OnInit {
 
@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
   longitude = -122.912738;
   mapType = 'roadmap';
 
+  selectedRestaurant:any;
+
   constructor() {
     this.menuActive = false;
   }
@@ -36,6 +38,17 @@ export class HomeComponent implements OnInit {
       this.toggleMenuActive();
     }
     //console.log(this.message);
+  }
+
+  getMarker(marker: any) {
+    console.log(marker);
+    this.selectedRestaurant = {
+      name: marker.name,
+      dishcount: marker.dishcount,
+      lat: marker.lat,
+      long: marker.long,
+      alpha: marker.alpha
+    }
   }
 
   updateMenu(test: string) {
