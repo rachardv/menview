@@ -43,7 +43,7 @@ class RestaurantResource(Resource):
     @marshal_with(restaurant_fields)
     def put(self, name):
         parsed_args = parser.parse_args()
-        restaurant = session.query(Restaurant).filter(restaurant.name == name).first()
+        restaurant = session.query(Restaurant).filter(Restaurant.name == name).first()
         restaurant.name = parsed_args['name']
         restaurant.description = parsed_args['description']
         restaurant.address = parsed_args['address']
