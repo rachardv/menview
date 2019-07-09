@@ -9,6 +9,8 @@ services:
       dockerfile: Dockerfile-flask
     ports:
         - '5000:5000'
+    depends_on:
+      - db
 
   dev:
     container_name: menview-dev

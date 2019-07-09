@@ -28,17 +28,17 @@ To instantiate the database with data:
 
 4. type the password "secret" when promted 
 
-Note that you can verify if you have successfully added the data by running: `docker exec -it menview_db_1 psql -U admin -W menviewdb -f dump.sql` and checking if the users table exists via `\dt`.
+Note that you can verify if you have successfully added the data by running: `docker exec -it menview_db_1 psql -U admin -W menviewdb` and checking if the users table exists via `\dt`.
 
 The password is again "secret"
 
-Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the databse volume and remove any data. 
+Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the database volume and remove any data. 
 
 Flask REST-API
 ===============
 1. run `python3 ./flask_api/models.py` to instantiate an empty database with correct tables. (This is temporary)
 
-2. `visit http:0.0.0.0:5000/restaurants/` You should be presented with empty brackets. Post requests can be made with curl to this address. 
+2. visit `http:0.0.0.0:5000/restaurants/` or `http://localhost:5000/restaurants/` You should be presented with empty brackets. Post requests can be made with curl to this address. 
 
 3. 
 

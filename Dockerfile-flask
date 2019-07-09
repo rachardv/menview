@@ -1,7 +1,6 @@
-FROM ubuntu:18.10
+FROM python:3.6-alpine
 
-RUN apt-get update
-RUN apt-get install -y python3 python3-dev python3-pip
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 
 COPY requirements_flask.txt .
 COPY flask_api .
@@ -12,5 +11,5 @@ RUN pip3 install -r requirements_flask.txt
 
 EXPOSE 5000
 
-ENTRYPOINT [ "python3" ]
-CMD [ "api.py" ]
+CMD python models.py \
+  && python api.py
