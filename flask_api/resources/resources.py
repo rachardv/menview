@@ -14,13 +14,19 @@ restaurant_fields = {
     'rating': fields.Integer
 }
 
+
+
+
+
 parser = reqparse.RequestParser()
+#parse args for restaurant
 parser.add_argument('name')
 parser.add_argument('lat')
 parser.add_argument('lon')
 parser.add_argument('address')
 parser.add_argument('description')
 parser.add_argument('rating')
+
 
 
 
@@ -43,7 +49,7 @@ class RestaurantResource(Resource):
     @marshal_with(restaurant_fields)
     def put(self, name):
         parsed_args = parser.parse_args()
-        restaurant = session.query(Restaurant).filter(restaurant.name == name).first()
+        restaurant = session.query(Restaurant).filter(Restaurant.name == name).first()
         restaurant.name = parsed_args['name']
         restaurant.description = parsed_args['description']
         restaurant.address = parsed_args['address']

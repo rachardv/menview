@@ -30,8 +30,9 @@ class Dish(Base):
     __tablename__='dishes'
     
     dish_id = Column(Integer, primary_key=True)
-    name = Column(String(60), nullable=False)
-    description = Column(String(200))
+    dish_rating = Column(Integer)
+    dish_name = Column(String(60), nullable=False)
+    dish_description = Column(String(200))
     restaurant_name = Column(String(30), ForeignKey("restaurants.name"), nullable=False)
     
 
