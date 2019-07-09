@@ -1,7 +1,6 @@
 from flask import request
-from models import Restaurant
+from models import Dish
 from db import session
-from datetime import datetime
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
 
 dish_fields = {
@@ -14,7 +13,6 @@ dish_fields = {
 
 
 parser = reqparse.RequestParser()
-
 
 
 #parse args for dishes                                                                                                              
@@ -44,12 +42,11 @@ class DishResource(Resource):
     def put(self, dish_id):
         parsed_args = parser.parse_args()
         dish = session.query(Dish).filter(Dish.dish_id == dish_id).first()
-        dish.name = parsed_args['na']
-        dish.description = parsed_args['description']
-        dish.address = parsed_args['address']
-        dish.rating = parsed_args['rating']
-        dish.lat = parsed_args['lat']
-        dish.lon = parsed_args['lon']
+        dish.dish_id = parsed_args['dish_id']
+        dish.dish_description = parsed_args['dish_description']
+        dish.dish_name = parsed_args['dish_name']
+        dish.dish_rating = parsed_args['dish_rating']
+        dish.restaurant_name = parsed_args['restaurant_name']
         session.add(dish)
         session.commit()
         return dish, 201
@@ -57,17 +54,17 @@ class DishResource(Resource):
 
 
 class DishListResource(Resource):
-    @marshal_with(restaurant_fields)
+    @marshal_with(dish_fields)
     def get(self):
-        restaurants = session.query(Restaurant).all()
-        return restaurants
+        dishes = session.query(Dish).all()
+        return dishes
 
-    @marshal_with(restaurant_fields)
+    @marshal_with(dish_fields)
     def post(self):
         parsed_args = parser.parse_args()
-        dish = Restaurant(name=parsed_args['name'], description=parsed_args['description'],
-                    rating=parsed_args['rating'], address=parsed_args['address'],
-                    lat=parsed_args['lat'], lon=parsed_args['lon'])
+        dish = Dish(dish_name=parsed_args['dish_name'], dish_description=parsed_args['dish_description'],
+                    dish_rating=parsed_args['dish_rating'], dish_id=parsed_args['dish_id'], restaurant_name=parsed_args['restaurant_name'])
+                   
         session.add(dish)
         session.commit()
         return dish, 201

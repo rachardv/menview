@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 # Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
-# DB_URI = 'sqlite:///./main.db'
+#DB_URI = 'sqlite:///./main.db'
 DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
 Base = declarative_base()
@@ -42,4 +42,4 @@ if __name__ == "__main__":
 
     engine = create_engine(DB_URI)
     Base.metadata.create_all(engine)
-
+    
