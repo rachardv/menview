@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   message: string;
   menuItems: any;
 
+
   /* maps vars */
   latitude = 49.279030;
   longitude = -122.912738;
