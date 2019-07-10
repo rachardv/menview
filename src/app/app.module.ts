@@ -34,6 +34,8 @@ import {
 
 /* Services*/
 import { AuthenticationService } from './_services';
+import { RestaurantService } from './_services';
+
 
 @NgModule({
   declarations: [
