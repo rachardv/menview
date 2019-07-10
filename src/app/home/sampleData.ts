@@ -1,27 +1,27 @@
 export const restaurants = [
   {
-    name: 'Renaissance',
-    location: 'Simon Fraser University',
-    dishcount: 1,
-    lat: 49.275344,
-    long: -122.915344,
-    alpha: 1
+    "name": "Renaissance",
+    "lat": 49.275344,
+    "lon": -122.915344,
+    "address": "Simon Fraser University",
+    "description": "",
+    "rating": 0
   },
   {
-    name: 'Starbucks',
-    location: 'Simon Fraser University',
-    dishcount: 1,
-    lat: 49.275644,
-    long: -122.917553,
-    alpha: 1
+    "name": "Starbucks",
+    "lat": 49.275644,
+    "lon": -122.917553,
+    "address": "Simon Fraser University",
+    "description": "",
+    "rating": 0
   },
   {
-    name: 'McDonald\'s',
-    location: 'University of British Columbia',
-    dishcount: 2,
-    lat: 49.276791,
-    long: -122.916791,
-    alpha: 1
+    "name": "McDonald\'s",
+    "lat": 49.276791,
+    "lon": -122.916791,
+    "address": "University of British Columbia",
+    "description": "",
+    "rating": 0
   }
 ];
 

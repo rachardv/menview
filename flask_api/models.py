@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from sqlalchemy import Column, Integer, ForeignKey, String, create_engine
+from sqlalchemy import Column, Integer, ForeignKey, String, types, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -15,8 +15,8 @@ class Restaurant(Base):
     __tablename__ = 'restaurants'
 
     name = Column(String(30), primary_key=True)
-    lat = Column(Integer)
-    lon = Column(Integer)
+    lat = Column(types.Numeric(18,15))
+    lon = Column(types.Numeric(18,15))
     address = Column(String(100))
     description = Column(String(200))
     rating = Column(Integer)

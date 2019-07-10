@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
   menuActive: boolean;
   message: string;
   menuItems: any;
-
-  restaurants:any;
-
+  markers:any;
 
   /* maps vars */
   latitude = 49.279030;
@@ -34,12 +32,20 @@ export class HomeComponent implements OnInit {
     this.menuActive = false;
   }
 
-  getRestaurants() {
+  getAllRestaurants() {
     console.log("home.component.ts running getRestaurants()")
-    this.restaurants = [];
-    this.api.getRestaurants().subscribe((data: {}) => {
+    this.markers = [];
+    this.api.getAllRestaurants().subscribe((data: {}) => {
       console.log(data);
-      this.restaurants = data;
+      this.markers = data;
+    });
+  }
+
+
+  getRestaurant(query:string) {
+    console.log("home.component.ts running getRestaurants()")
+    this.api.getRestaurant(query).subscribe((data: {}) => {
+      console.log(data);
     });
   }
 
@@ -59,7 +65,7 @@ export class HomeComponent implements OnInit {
       name: marker.name,
       dishcount: marker.dishcount,
       lat: marker.lat,
-      long: marker.long,
+      lon: marker.lon,
       alpha: marker.alpha
     }
   }

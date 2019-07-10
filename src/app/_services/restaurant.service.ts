@@ -25,9 +25,14 @@ export class RestaurantService {
     return body || { };
   }
 
-  getRestaurants(): Observable<any> {
-    console.log("restaurant.service.ts running getRestaurants()");
+  getAllRestaurants(): Observable<any> {
+    console.log("restaurant.service.ts running getAllRestaurants()");
     return this.http.get(endpoint + 'restaurants/').pipe(map(this.extractData));
+  }
+
+  getRestaurant(query:string): Observable<any> {
+    console.log("restaurant.service.ts running getRestaurant()");
+    return this.http.get(endpoint + 'restaurants/' + query).pipe(map(this.extractData));
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
