@@ -3,8 +3,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, String, types, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
-
-
 # Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
 #DB_URI = 'sqlite:///./main.db'
 DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
@@ -15,8 +13,8 @@ class Restaurant(Base):
     __tablename__ = 'restaurants'
 
     name = Column(String(30), primary_key=True)
-    lat = Column(String(30))
-    lon = Column(String(30))
+    lat = Column(String(30)) # parse into float in CLIENT-SIDE
+    lon = Column(String(30)) # parse into float in CLIENT-SIDE
     address = Column(String(100))
     description = Column(String(200))
     rating = Column(Integer)

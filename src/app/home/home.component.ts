@@ -14,11 +14,11 @@ import { restaurants, menus } from './sampleData'
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
-        style({opacity:0}),
-        animate(250, style({opacity:1})) 
+        style({ opacity: 0 }),
+        animate(250, style({ opacity: 1 }))
       ]),
       transition(':leave', [
-        animate(250, style({opacity:0})) 
+        animate(250, style({ opacity: 0 }))
       ])
     ])
   ],
@@ -31,76 +31,100 @@ export class HomeComponent implements OnInit {
   menuActive: boolean;
   message: string;
   menuItems: any;
-  markers:any;
+  markers: any;
+  loading: boolean = false;
 
   /* maps vars */
   latitude = 49.279030;
   longitude = -122.912738;
   mapType = 'roadmap';
-  overview:boolean = true;
-  overlay:boolean = false;
-  currentRestaurantName:string;
+  overview: boolean = true;
+  overlay: boolean = false;
 
-  selectedRestaurant:any;
+  currentRestaurantName: string;
+  selectedRestaurant: any;
 
-  response:any = {
-      "name": "",
-      "lat": "",
-      "lon": "",
-      "address": "",
-      "description": "",
-      "rating": 0
+  response: any = {
+    "name": "",
+    "lat": "",
+    "lon": "",
+    "address": "",
+    "description": "",
+    "rating": 0
   }
 
-  constructor(public api:RestaurantService) {
+  constructor(public api: RestaurantService) {
     this.menuActive = false;
   }
 
   toggleOverview() {
-
     if (this.overview) {
+      // ENABLE OVERLAY
       this.overview = !this.overview;
-  
-  
-      setTimeout(()=>{   
-            this.overlay = !this.overlay;
+
+      setTimeout(() => {
+        this.overlay = !this.overlay;
       }, 250);
     } else {
+      // DISABLE OVERLAY
       this.overlay = !this.overlay;
-  
-  
-      setTimeout(()=>{   
-            this.overview = !this.overview;
+      this.getAllRestaurants(); // load restaurant list again?
+
+      setTimeout(() => {
+        this.overview = !this.overview;
       }, 250);
     }
   }
 
   getAllRestaurants() {
-    console.log("home.component.ts running getRestaurants()")
+    this.loading = true;
     this.markers = [];
     this.api.getAllRestaurants().subscribe((data: {}) => {
-      console.log(data);      
+      console.log(data);
 
-      this.markers = data;
-    });
-  }
-
-
-  getRestaurant(query:string) {
-    console.log("home.component.ts running getRestaurants()")
-    this.api.getRestaurant(query).subscribe((data: {}) => {
-
-      // parse floats from response
-      data["lat"] = parseFloat(data["lat"]);
-      data["lon"] = parseFloat(data["lon"]);
+      var count = Object.keys(data).length;
+      for (var i = 0; i < count; i++) {
+        console.log(data[i]["lat"]);
+        console.log(data[i]["lon"]);
+        data[i]["lat"] = parseFloat(data[i]["lat"]);
+        data[i]["lon"] = parseFloat(data[i]["lon"]);
+      }
+      console.log(count);
 
       this.response = JSON.stringify(data);
 
-
-
-      console.log(data);
-    });
+      this.markers = data;
+      this.loading = false;
+    },
+      (error: any) => {
+        console.log("Error retrieving all restaurants!");
+        this.loading = false;
+      }
+    );
   }
+
+  getRestaurant(query: string) {
+    this.loading = true;
+
+    this.api.getRestaurant(query).subscribe(
+      (data: {}) => {
+
+        // parse floats from response
+        data["lat"] = parseFloat(data["lat"]);
+        data["lon"] = parseFloat(data["lon"]);
+
+        this.response = JSON.stringify(data);
+
+        console.log(data);
+        this.loading = false;
+      },
+      (error: any) => {
+        console.log("Error retrieving " + query);
+        this.loading = false;
+      }
+    );
+  }
+
 
   receiveMessage($event) {
     this.message = $event;
@@ -136,6 +160,17 @@ export class HomeComponent implements OnInit {
   restaurantList = restaurants;
 
   ngOnInit() {
+    this.getAllRestaurants(); // load restaurant data on navigate
+    
+    // // TODO: DELETE, DEBUG
+    // this.toggleOverview(); 
+    // this.message = "Starbucks";
+    // if (!this.menuActive) {
+    //   this.toggleMenuActive();
+    // }
+    // this.updateMenu(this.message);
+    // // END DELETE
+
   }
 
 }

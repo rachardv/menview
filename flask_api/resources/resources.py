@@ -4,7 +4,6 @@ from db import session
 from datetime import datetime
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
 
-
 restaurant_fields = {
     'name': fields.String,
     'lat': fields.String,
@@ -14,10 +13,6 @@ restaurant_fields = {
     'rating': fields.Integer
 }
 
-
-
-
-
 parser = reqparse.RequestParser()
 #parse args for restaurant
 parser.add_argument('name')
@@ -26,9 +21,6 @@ parser.add_argument('lon')
 parser.add_argument('address')
 parser.add_argument('description')
 parser.add_argument('rating')
-
-
-
 
 class RestaurantResource(Resource):
     @marshal_with(restaurant_fields)
@@ -59,7 +51,6 @@ class RestaurantResource(Resource):
         session.add(restaurant)
         session.commit()
         return restaurant, 201
-
 
 class RestaurantListResource(Resource):
     @marshal_with(restaurant_fields)
