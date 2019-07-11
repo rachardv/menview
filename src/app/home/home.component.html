@@ -1,51 +1,58 @@
-<input class="search-bar rounded" type="text" placeholder="Search for restaurants" />
+<div id="overlay" *ngIf="overlay" [@fadeInOut]>
+    <button style="width: 100%" (click)="toggleOverview()">Disable Overlay</button>
 
+    <h2>{{currentRestaurantName}}</h2>
 
-<br><br>
-
-<agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
-    <span>Loading...</span>
-    <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
-        [opacity]="r.alpha" (markerClick)="getMarker(r)">
-    </agm-marker>
-</agm-map>
-
-<div *ngIf="selectedRestaurant" class="row rounded">
-    <div class="restaurant-view rounded">
-        <span class="restaurant-name">{{selectedRestaurant.name}}</span>
-        <span class="right-text">Dishes: {{selectedRestaurant.dishcount}}</span>
-        <hr class="divider">
-        <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.lon}}</i></p>
+    <div class="row">
+        <div *ngIf="menuActive" class="col">
+            <ul style="padding: 0em; list-style-type: none;">
+                <li *ngFor="let menuItem of menuItems">
+                    <dish [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
+                        [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
 
+<div id="overview" *ngIf="overview" [@fadeInOut]>
 
+    <input class="search-bar rounded" type="text" placeholder="Search for restaurants" />
 
-<!-- <div class="row">
-    <div *ngIf="menuActive" class="col">
-        <ul style="padding: 0em; list-style-type: none;">
-            <li *ngFor="let menuItem of menuItems">
-                <dish [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
-                    [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
-            </li>
-        </ul>
+    <br><br>
+
+    <!-- <span>AGM component commented out for now to reduce API calls</span> -->
+    <agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+        <span>Loading...</span>
+        <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
+            [opacity]="r.alpha" (markerClick)="getMarker(r)">
+        </agm-marker>
+    </agm-map>
+
+    <div *ngIf="selectedRestaurant" class="row rounded">
+        <div class="restaurant-view rounded">
+            <span class="restaurant-name">{{selectedRestaurant.name}}</span>
+            <span class="right-text">Dishes: {{selectedRestaurant.dishcount}}</span>
+            <hr class="divider">
+            <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.lon}}</i></p>
+        </div>
     </div>
-</div> -->
+    
+    <button style="width: 100%" (click)="getAllRestaurants()">Test restaurant retrieval</button>
 
-<button style="width: 100%" (click)="getAllRestaurants()">Test restaurant retrieval</button>
+    <div class="row">
+        <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
+            <ul style="padding: 0em; list-style-type: none;">
+                <li *ngFor="let restaurant of restaurantList">
+                    <restaurant class="unselected" [ngClass]="{'selected': restaurant.name === message }"
+                        [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
+                        (click)="toggleOverview()" (messageEvent)="receiveMessage($event)">
+                    </restaurant>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<p style="margin-top: 1.5em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ex, tristique id eleifend sit amet, vulputate eu
-    erat. Nunc sodales aliquet nunc a pretium. Proin dictum eleifend elit, eget elementum erat lobortis vel. In dictum
-    nisi fermentum, sagittis nibh vel, gravida augue. Nam at enim placerat, rhoncus urna et, cursus ante. Aenean
-    pellentesque arcu velit, non congue turpis tincidunt quis. Praesent sollicitudin dolor leo. Vivamus lobortis
-    consequat mauris, eget suscipit risus porta quis. Quisque quam tellus, hendrerit a velit sit amet, euismod malesuada
-    magna. In tempus vulputate consequat. Maecenas sit amet luctus erat, sit amet aliquam massa.
-</p>
 
-<p>
-    Fusce pellentesque, mi sagittis tristique consequat, arcu justo pulvinar magna, eu suscipit augue tortor et eros.
-    Cras eu pharetra neque, ac aliquet orci. Vivamus felis turpis, dignissim sit amet purus a, mattis imperdiet sem.
-    Integer ex sem, fermentum quis nisl vel, congue porttitor eros. Sed tincidunt lorem elit, id porta sapien varius id.
-    Aenean porta maximus felis vel dignissim. Sed scelerisque mauris nec orci feugiat tristique. Nunc id varius sapien.
-    Nulla commodo enim a erat pretium ultricies. Ut lacinia eros finibus justo facilisis, id rhoncus purus bibendum.
-</p>
+
+</div>
