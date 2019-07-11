@@ -7,8 +7,8 @@ from flask_restful import reqparse, abort, Resource, fields, marshal_with
 
 restaurant_fields = {
     'name': fields.String,
-    'lat': fields.Integer,
-    'lon': fields.Integer,
+    'lat': fields.String,
+    'lon': fields.String,
     'address': fields.String,
     'description': fields.String,
     'rating': fields.Integer

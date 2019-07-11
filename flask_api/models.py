@@ -15,8 +15,8 @@ class Restaurant(Base):
     __tablename__ = 'restaurants'
 
     name = Column(String(30), primary_key=True)
-    lat = Column(types.Numeric(18,15))
-    lon = Column(types.Numeric(18,15))
+    lat = Column(String(30))
+    lon = Column(String(30))
     address = Column(String(100))
     description = Column(String(200))
     rating = Column(Integer)

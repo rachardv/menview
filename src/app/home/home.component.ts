@@ -43,14 +43,20 @@ export class HomeComponent implements OnInit {
 
   selectedRestaurant:any;
 
+  response:any = {
+      "name": "",
+      "lat": "",
+      "lon": "",
+      "address": "",
+      "description": "",
+      "rating": 0
+  }
+
   constructor(public api:RestaurantService) {
     this.menuActive = false;
   }
 
   toggleOverview() {
-
-    // debug
-    this.updateMenu("Starbucks");
 
     if (this.overview) {
       this.overview = !this.overview;
@@ -73,7 +79,8 @@ export class HomeComponent implements OnInit {
     console.log("home.component.ts running getRestaurants()")
     this.markers = [];
     this.api.getAllRestaurants().subscribe((data: {}) => {
-      console.log(data);
+      console.log(data);      
+
       this.markers = data;
     });
   }
@@ -82,6 +89,15 @@ export class HomeComponent implements OnInit {
   getRestaurant(query:string) {
     console.log("home.component.ts running getRestaurants()")
     this.api.getRestaurant(query).subscribe((data: {}) => {
+
+      // parse floats from response
+      data["lat"] = parseFloat(data["lat"]);
+      data["lon"] = parseFloat(data["lon"]);
+
+      this.response = JSON.stringify(data);
+
+
+
       console.log(data);
     });
   }

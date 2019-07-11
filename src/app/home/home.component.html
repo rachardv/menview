@@ -22,12 +22,12 @@
     <br><br>
 
     <!-- <span>AGM component commented out for now to reduce API calls</span> -->
-    <agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+    <!-- <agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
         <span>Loading...</span>
         <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
             [opacity]="r.alpha" (markerClick)="getMarker(r)">
         </agm-marker>
-    </agm-map>
+    </agm-map> -->
 
     <div *ngIf="selectedRestaurant" class="row rounded">
         <div class="restaurant-view rounded">
@@ -38,13 +38,19 @@
         </div>
     </div>
     
-    <button style="width: 100%" (click)="getAllRestaurants()">Test restaurant retrieval</button>
+    <button style="width: 100%" (click)="getAllRestaurants()">Test all retrieval</button>
+    <br>
+    <button style="width: 100%" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
+
+    <div>
+        {{response}}
+    </div>
 
     <div class="row">
         <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
             <ul style="padding: 0em; list-style-type: none;">
                 <li *ngFor="let restaurant of restaurantList">
-                    <restaurant class="unselected" [ngClass]="{'selected': restaurant.name === message }"
+                    <restaurant class="unselected"
                         [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
                         (click)="toggleOverview()" (messageEvent)="receiveMessage($event)">
                     </restaurant>
