@@ -10,19 +10,16 @@ import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core'; /* google maps for Angular */
 
-/* Home/Main Component */
+/* Components */
+import { UserComponent } from './user';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from './alert/alert.component';
 import {
   HomeComponent,
   DishComponent,
   RestaurantComponent
 } from './home/';
-
-/* Login/Register */
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { AlertComponent } from './alert/alert.component';
-
-
 
 /* Helpers */
 import {
@@ -46,7 +43,8 @@ import { RestaurantService } from './_services';
     RestaurantComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
