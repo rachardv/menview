@@ -9,6 +9,17 @@ DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
 Base = declarative_base()
 
+
+class Review(Base):
+    __tablename__='reviews'
+    
+    review_id = Column(Integer, primary_key=True)
+    rating = Column(Integer)
+    username = Column(String(20), ForeignKey("users.username"), nullable=False)
+    dish_id = Column(Integer, ForeignKey("dishes.dish_id"), nullable=False)
+    review = Column(String(200))
+
+
 class Restaurant(Base):
     __tablename__ = 'restaurants'
 

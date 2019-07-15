@@ -6,7 +6,7 @@ from models import Restaurant, User, Dish
 from resources.restaurant_resource import RestaurantListResource, RestaurantResource
 from  resources.dish_resource import DishListResource, DishResource
 from resources.user_resource import UserListResource, UserResource
-
+from resources.review_resource import ReviewListResource, ReviewResource
 from waitress import serve
 
 app = Flask(__name__)
@@ -24,9 +24,10 @@ api.add_resource(DishListResource, '/dishes/', endpoint='dishes')
 api.add_resource(DishResource, '/dishes/<string:dish_id>', endpoint='dish')  
 
 api.add_resource(UserListResource, '/users/', endpoint='users')  
-api.add_resource(UserResource, '/user/<string:username>', endpoint='user')  
+api.add_resource(UserResource, '/users/<string:username>', endpoint='user')  
 
-
+api.add_resource(ReviewListResource, '/reviews/', endpoint='reviews')  
+api.add_resource(ReviewResource, '/reviews/<string:review_id>', endpoint='review')  
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=5000)
