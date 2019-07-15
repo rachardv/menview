@@ -1,8 +1,10 @@
 FROM python:3.6-alpine
 
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
+RUN apk add --update bash && rm -rf /var/cache/apk/*
 
 COPY requirements_flask.txt .
+COPY wait.sh .
 COPY flask_api .
 
 
@@ -11,5 +13,6 @@ RUN pip3 install -r requirements_flask.txt
 
 EXPOSE 5000
 
-CMD python models.py \
+CMD /wait.sh db 5432 \
+  && python models.py \
   && python api.py
