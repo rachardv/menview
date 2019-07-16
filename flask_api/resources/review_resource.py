@@ -59,7 +59,11 @@ class ReviewResource(Resource):
 class ReviewListResource(Resource):
     @marshal_with(review_fields)
     def get(self):
-        reviews = session.query(Review).all()
+
+        parsed_args = parser.parse_args()
+        username = parsed_args['username']
+        reviews = session.query(Review).filter(Review.username == username).all()
+
         return reviews
 
     @marshal_with(review_fields)
