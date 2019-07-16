@@ -40,16 +40,22 @@ Flask REST-API
 
 2. visit `http:0.0.0.0:5000/restaurants/` or `http://localhost:5000/restaurants/` You should be presented with empty brackets. Post requests can be made with curl to this address. 
 
-3. 
 
 Note: To run separately, can be commented out of docker-compose and ran as `python3 ./flask_api/api.py`  (I reccomend this during development).
 
 Using Flask API
 ===============
 
+A list of endpoints can be found in flask_api/api.py
+A database tables can be found in flask_api/models.py
+
 1. `curl -d '{"name":"white spot", "rating":"3"}' -H "Content-Type: application/json" -X POST http://0.0.0.0:5000/restaurants/`
 
 2. query via `0.0.0.0/restaurants/white spot` or similar GET request
+
+3. Dishes endpoint MUST be queried with a restaurant_name `http://127.0.0.1:5000/dishes/?restaurant_name=burger%20king` In the final project a username will be optional.
+
+4. Reviews endpoint MUST be queried with a username `http://127.0.0.1:5000/reviews/?username=bob`.
 
 Troubleshooting
 ===============
