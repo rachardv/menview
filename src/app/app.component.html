@@ -1,17 +1,25 @@
-<nav class="navbar navbar-expand">
-  <div class="navbar-nav nav-item-list">
-    <a id="site-title" [ngClass]="{'disabled': isActive('/')}" class="nav-item nav-link" routerLink="/">
-    <b><span class="c2">Men</span><span class="c4">view</span></b></a>
-    <!-- <a class="nav-item nav-link" [ngClass]="{'nav-highlight': isActive('/')}" routerLink="/">Home</a> -->
-    <a class="navbar-item navbar-line-height rounded" *ngIf="currentUser" (click)="logout()">Logout</a>
-    <a href="/login" class="navbar-item navbar-line-height rounded" *ngIf="!currentUser">Sign In</a> 
-  </div>
+<nav>
+  <ul>
+    <li>
+        <a id="site-title" [ngClass]="{'disabled': isActive('/')}" class="nav-item" routerLink="/">
+          <b><span class="site-title-text c2">Men</span><span class="c4 site-title-text">view</span></b></a>
+    </li>
+    <li>
+        <a class="btn nav-btn rounded" *ngIf="currentUser" (click)="logout()" href="#">Logout</a>
+    </li>
+    <li>
+        <a class="btn nav-btn rounded" *ngIf="!currentUser" href="/login">Sign In</a> 
+    </li>
+    <!-- add nav bar links here -->
+    <!-- <li>
+        <a class="nav-item nav-link" [ngClass]="{'nav-highlight': isActive('/')}" routerLink="/">Home</a>
+    </li> -->
+  </ul>
 </nav>
 
-
-<div class="content-box">
-  <div class="wrapper rounded">
+<div class="pseudo-main">
+  <div class="content-box rounded shadow">
       <alert></alert> <!-- shows app-wide alerts -->
-    <router-outlet class="row"></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>

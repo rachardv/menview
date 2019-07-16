@@ -1,9 +1,9 @@
-<div class="dish-card">
+<div class="card rounded">
     <!-- <img src={{isrc}} class="dish-image"> -->
     <span class="dish-name">{{name}}<span class="cost-label"><i>${{cost}}.99</i></span></span>
     <span class="right-text">{{rating}}/5 Stars</span>
     <hr class="divider">
     <p>{{description}}</p>
-    <button class="dish-button" (click)="read()">Read Reviews</button>
-    <button class="dish-button" (click)="write()">Write a Review</button>
+    <button class="btn-alt" style="width: 50%; border-radius: 0.5rem 0rem 0rem 0.5rem; border-right: 1px solid grey;" (click)="read()">Read Reviews</button>
+    <button class="btn-alt" style="width: 50%; border-radius: 0rem 0.5rem 0.5rem 0rem; border-left: none" (click)="write()">Write a Review</button>
 </div>

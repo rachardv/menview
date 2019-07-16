@@ -1,70 +1,226 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './assets/bootstrap.min.css';
+/* @import './assets/bootstrap.min.css'; */
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 * {
     font-family: 'Raleway', sans-serif;
-    font-size: 1em;
+    font-size: 1rem;
+    box-sizing: border-box;
 }
 
-html {
-    font-size: 1em;
-    line-height: 1em;
-}
+/* HTML ELEMENTS */
 
-.jumbotron {
-    background-color: white !important;
+html, body {
+    margin: 0rem;
+    padding: 0rem;
+    scroll-behavior: smooth;
+    min-height: 100%;
 }
 
 body {
     color: black;
-    background-color: #00ADE6;
+    background: rgba(0, 173, 230, 1);
+    background: linear-gradient(0deg, rgba(0, 90, 129, 1) 0%, rgba(25, 198, 255, 1) 100%);
 }
 
-.row {
-    /* override bootstrap styling */
-    margin-right: 0rem !important; 
+a, a:visited {
+    color: rgba(0, 90, 129, 1);
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+footer {
+    color: white;
+    background: transparent;
+    opacity: 1.0;
+    text-align: center;
+    width: 100%;
+    font-size: 0.8em;
+    padding: 1em;
+    min-height: 3rem;
+}
+
+
+nav {
+    position: fixed;
+    top: 0rem;
+    margin: 0rem;
+    padding: 0rem;
+    z-index: 1;
+    background-color: rgba(245, 245, 245, 1);
+    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
+    box-shadow: 1px 2px 1em 2px rgba(50,50,50,0.5);
+}
+
+nav>ul {
+    list-style-type: none;
+    width: 100%;
+    /* adjust navbar size with padding */
+    padding: 1rem 1rem;
+    margin: 0rem;
+}
+
+nav>ul>li {
+    display: inline-block;
+    margin-right: 1.5rem;
+}
+
+nav>ul>li>a {
+    text-decoration: none;
+    opacity: 1;
+    font-size: 1.1rem;
+}
+
+nav a, nav span {
+    text-decoration: none !important;
+}
+
+input:focus {
+    outline-width: 0;
+    box-shadow: 0 0 3px 1px #00ADE6;
+}
+
+nav, footer {
+    width: 100%;
+}
+
+/* COLOUR PALETTE */
+.c1 {
+    color: rgba(0, 90, 129, 1);
+}
+
+.c2 {
+    color: rgba(0, 173, 230, 1);
+}
+
+.c3 {
+    color: rgba(22, 255, 255, 1);
+}
+
+.c4 {
+    color: rgba(255, 149, 0, 1);
+}
+
+.c5 {
+    color: rgba(245, 245, 245, 1);
+}
+
+/* CLASSES & IDs BELOW */
+
+.rounded {
+    border-radius: 0.5em !important;
+}
+
+.shadow {
+    box-shadow: 3px 3px 5px -2px rgba(50, 50, 50, 0.5);
+}
+
+#site-title {
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+#site-title.disabled {
+    transition: 0ms;
+}
+
+.site-title-text {
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+.pseudo-main {
+    /* adjust top margin for content box offset from top (to account for navbar) */
+    margin: 6rem 0rem 0rem 0rem;
+    padding: 0rem 1rem 2rem 1rem;
+    background: transparent;
+}
+
+.content-box {
+    background-color: rgba(245, 245, 245, 1);
+    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
+    height: 100%;
+    min-height: 30rem;
+    padding: 1rem;
+}
+
+
+.btn, .btn-alt {
+    background-color: rgba(0, 173, 230, 1);
+    background: linear-gradient(0deg, rgba(0, 173, 230, 1) 0%, rgba(25, 198, 255, 1) 100%);
+    padding: 0.5rem 1rem;
+    color: white;
+    min-width: 6.5rem;
+    text-align: center;
+    border: none;
+    margin-top: 1rem;
+    box-shadow: 3px 3px 5px -2px rgba(50, 50, 50, 0.5);
+}
+
+.btn-alt {
+    background-color: rgba(240, 134, 0, 1);
+    background: linear-gradient(0deg, rgba(240, 134, 0, 1) 0%, rgba(255, 149, 0, 1) 100%);
+}
+
+.btn:hover, .btn-alt:hover {
+    color: white;
+    opacity: 0.8;
+}
+
+.btn:active, .btn-alt:active {
+    box-shadow: inset 0px 0px 0.5rem rgba(200,200,200, 0.8);
+    opacity: 1;
+}
+
+
+
+.nav-btn {
+    color: white !important;
+    font-weight: bold !important;
+    position: fixed;
+    right: 1rem;
+    top: 0.5rem;
+    margin: 0rem;
+    padding: 1rem;
+}
+
+.search-bar {
+    padding: 1rem 0.5rem;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid #CCCCCC;
+}
+
+.center {
+    text-align: center;
 }
 
 .map-box {
-    height: 400px;
+    /* match height with .restaurant-ul's height */
+    height: 30rem;
     width: 100%;
     margin: 1rem 0rem 1rem 0rem;
 }
 
 .agm-map-container-inner {
     width: 100% !important;
-}
-
-.content-box {
-    background-color: #F5F5F5;
-    height: 100%;
-    width: 100%;
-    padding: 1em;
-    margin: 3.5em 0.5em 0.5em 0em;
-}
-
-.wrapper {
-    background-color: white;
-    border: 1px solid #CCCCCC;
-    padding: 1em 0.5em;
-}
-
-.c1 {
-    color: #005A81;
-}
-
-.c2 {
-    color: #00ADE6;
-}
-
-.c3 {
-    color: #16FFFF;
-}
-
-.c4 {
-    color: #FF9500;
 }
 
 .soft-transition {
@@ -77,6 +233,68 @@ body {
     width: 0%;
     max-width: 0%;
     opacity: 0;
+}
+
+.split-small {
+    width: 40%;
+    max-width: 40%;
+    opacity: 1;
+}
+
+.split-large {
+    width: 60%;
+    max-width: 60%;
+    opacity: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.restaurant-ul {
+    /* match height with .map-box's height */
+    max-height: 30rem;
+    width: 100%;
+    padding: 0rem;
+    list-style-type: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: none;
+}
+
+.restaurant-li {
+    padding-right: 1rem;
+    z-index: 1;
+}
+
+.card {
+    border: 1px solid rgba(200,200,200, 0.8);
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: 0rem 0rem 1rem 0rem;
+    opacity: 1;
+    text-align: left;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
+}
+
+.clickable:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.clickable:active {
+    box-shadow: inset 0px 0px 0.5rem rgba(200,200,200, 0.8);
+    opacity: 1;
+}
+
+.restaurant-card:hover {
+    opacity: 0.8;
+}
+
+.restaurant-name, .dish-name {
+    font-weight: bold;
+    color: black;
+    margin-bottom: 0em;
 }
 
 .loading-spinner {
@@ -92,12 +310,22 @@ body {
 }
 
 .overlay-nav {
-    width: 100%;
+    margin: -1rem;
+    padding: 1rem;
+    border-radius: 0.5rem 0.5rem 0rem 0rem;
+    background-color: rgba(0, 90, 129, 1);
+    background: linear-gradient(0deg, rgba(0, 90, 129, 1) 0%, rgba(25, 115, 154, 1) 100%);
 }
 
 .overlay-nav ul {
+    width: 100%;
     list-style-type: none;
-    padding-left: 0em;
+    padding: 0rem;
+    margin: 0rem;
+}
+
+.overlay-nav * {
+    color: white !important;
 }
 
 .overlay-nav li {
@@ -109,82 +337,11 @@ body {
     padding: 0em 0.5em;
 }
 
-nav, .navbar, .navbar-expand {
-    background-color: #FAFAFA;
-    padding: 0em 0.5em;
-    margin: 0em;
-    top: 0em;
-    width: 100%;
-    z-index: 1;
-    position: fixed;
-    box-shadow: 0px 4px 2px -2px #DEDEDE;
+.overlay-content {
+    margin-top: 2rem;
 }
 
-.navbar-line-height {
-    line-height: 1em;
-}
-
-.navbar-item {
-    background-color: #00ADE6;
-    border-radius: 2em;
-    color: white !important;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 0em;
-    min-width: 6em;
-    padding: 0.75em 0.75em;
-    position: fixed;
-    top: 0.5em;
-    right: 1em;
-    transition: 200ms;
-    text-align: center;
-    transition: 100ms;
-}
-
-.navbar-item:hover, .navbar-item:active {
-    background-color: #005A81;
-}
-
-.navbar-dark, .navbar-nav, .nav-item-list {
-    background-color: #FAFAFA;
-    height: 100%;
-    line-height: 1em;
-    width: 100%;
-    padding: 0.75em;
-}
-
-footer {
-    color: white;
-    background-color: #00ADE6;
-    opacity: 1.0;
-    text-align: center;
-    width: 100%;
-    font-size: 0.8em;
-    padding: 1em;
-}
-
-#site-title {
-    margin-right: 1em;
-    font-size: 2em;
-    color: white;
-    font-weight: bold;
-}
-
-#site-title.disabled {
-    transition: 0ms;
-}
-
-.rounded {
-    border-radius: 0.5em !important;
-}
-
-.search-bar {
-    padding: 0.75em;
-    width: 100%;
-    box-shadow: none;
-    border: 1px solid #CCCCCC;
-}
-
+/* TODO: refactor these CSS classes */
 .restaurant-name, .dish-name {
     font-weight: bold;
     color: black;
@@ -199,23 +356,43 @@ footer {
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
 }
 
-input:focus {
-    outline-width: 0;
-    box-shadow: 0 0 3px 1px #00ADE6;
-}
-
-.full {
+.dish-image {
     width: 100%;
+    object-fit: contain;
+    /* preserves aspect ratio */
+    margin: 0 auto 1em auto;
+    box-shadow: 0px 1px 1px 3px #EEEEEE;
+    border-radius: .3em;
 }
 
-.split-small {
-    width: 40%;
-    max-width: 40%;
-    opacity: 1;
+.dish-button {
+    padding: 0.5em;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: .3em;
+    border: 1px solid #343a40;
+    color: #FFFFFF;
+    background-color: #343a40;
+    box-shadow: 0px 1px 1px 3px #CCCCCC;
+    opacity: 0.8;
 }
 
-.split-large {
-    width: 60%;
-    max-width: 60%;
-    opacity: 1;
+.dish-button:hover, .dish-button:active {
+    opacity: 1.0;
+    box-shadow: none;
+    box-shadow: 0px 2px 2px 2px #999999;
+}
+
+.divider {
+    margin: 0em 0em 0.3em 0em;
+    padding: 0em;
+}
+
+.right-text {
+    float: right;
+}
+
+.cost-label {
+    margin-left: 1em;
+    color: #444444;
 }
