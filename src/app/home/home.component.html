@@ -26,7 +26,7 @@
 
 <div id="overview" *ngIf="overview" [@fadeInOut]>
 
-    <input class="search-bar rounded" type="text" placeholder="Search for restaurants" />
+    <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword" placeholder="Search for restaurants" />
 
     <br><br>
 
@@ -58,7 +58,7 @@
     <div class="row">
         <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
             <ul style="padding: 0em; list-style-type: none;">
-                <li *ngFor="let restaurant of restaurantList">
+                <li *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
                     <restaurant class="unselected"
                         [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
                         (click)="toggleOverview()" (messageEvent)="receiveMessage($event)">

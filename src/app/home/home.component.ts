@@ -8,7 +8,6 @@ import { RestaurantService } from '../_services'
 
 import { restaurants, menus } from './sampleData'
 
-
 @Component({
   selector: 'app-home',
   animations: [
@@ -33,6 +32,7 @@ export class HomeComponent implements OnInit {
   menuItems: any;
   markers: any;
   loading: boolean = false;
+  searchKeyword: string = "";
 
   /* maps vars */
   latitude = 49.279030;
