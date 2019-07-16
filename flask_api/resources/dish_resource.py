@@ -21,6 +21,7 @@ parser.add_argument('dish_rating')
 parser.add_argument('dish_name')
 parser.add_argument('dish_description')
 parser.add_argument('restaurant_name')
+parser.add_argument('username')
 
 class DishResource(Resource):
     @marshal_with(dish_fields)
@@ -56,7 +57,11 @@ class DishResource(Resource):
 class DishListResource(Resource):
     @marshal_with(dish_fields)
     def get(self):
-        dishes = session.query(Dish).all()
+        parsed_args = parser.parse_args()
+
+        #dish = session.query(Dish).filter(Dish.dish_id == dish_id).first()
+        restaurant_name = parsed_args['restaurant_name']
+        dishes = session.query(Dish).filter(Dish.restaurant_name == restaurant_name).all()
         return dishes
 
     @marshal_with(dish_fields)

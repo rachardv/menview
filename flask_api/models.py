@@ -36,6 +36,7 @@ class User(Base):
     username = Column(String(20), primary_key=True)
     email = Column(String(50), unique=True, nullable=False)
     password = Column(String(30), nullable=False)
+#    file = Column(String(60))
 
 class Dish(Base):
     __tablename__='dishes'

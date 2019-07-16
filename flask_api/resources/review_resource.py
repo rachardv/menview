@@ -65,11 +65,11 @@ class ReviewListResource(Resource):
     @marshal_with(review_fields)
     def post(self):
         parsed_args = parser.parse_args()
-        reviews = Review(review_id=parsed_args['review_id'], username=parsed_args['username'],
+        review = Review(review_id=parsed_args['review_id'], username=parsed_args['username'],
                     rating=parsed_args['rating'], review=parsed_args['review'],
                     dish_id=parsed_args['dish_id'])
-        session.add(reviews)
+        session.add(review)
         session.commit()
-        return reviews, 201
+        return review, 201
 
 
