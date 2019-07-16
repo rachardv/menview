@@ -14,10 +14,10 @@ import { restaurants, menus } from './sampleData'
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate(250, style({ opacity: 1 }))
+        animate(225, style({ opacity: 1 }))
       ]),
       transition(':leave', [
-        animate(250, style({ opacity: 0 }))
+        animate(225, style({ opacity: 0 }))
       ])
     ])
   ],
@@ -43,6 +43,9 @@ export class HomeComponent implements OnInit {
 
   currentRestaurantName: string;
   selectedRestaurant: any;
+
+  restaurantList: any = [];
+
 
   response: any = {
     "name": "",
@@ -79,6 +82,8 @@ export class HomeComponent implements OnInit {
   getAllRestaurants() {
     this.loading = true;
     this.markers = [];
+
+    /*
     this.api.getAllRestaurants().subscribe((data: {}) => {
       console.log(data);
 
@@ -101,6 +106,12 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     );
+    */
+
+    /* TEMPORARY SAMPLE DATA */
+    this.loading = false;
+    this.restaurantList = restaurants;
+    
   }
 
   getRestaurant(query: string) {
@@ -156,8 +167,6 @@ export class HomeComponent implements OnInit {
   toggleMenuActive() {
     this.menuActive = !this.menuActive;
   }
-
-  restaurantList = restaurants;
 
   ngOnInit() {
     this.getAllRestaurants(); // load restaurant data on navigate

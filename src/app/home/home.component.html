@@ -1,5 +1,5 @@
 <div id="loading-spinner" *ngIf="loading" [@fadeInOut] class="loading-spinner">
-        <p style="position: fixed; top: 50%; width: 100%; text-align: center;">Loading...</p>
+    <p style="position: fixed; top: 50%; width: 100%; text-align: center;">Loading...</p>
 </div>
 
 <div id="overlay" *ngIf="overlay" [@fadeInOut]>
@@ -26,17 +26,33 @@
 
 <div id="overview" *ngIf="overview" [@fadeInOut]>
 
+
     <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword" placeholder="Search for restaurants" />
 
-    <br><br>
+    <div class="row full soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}" style="float: left;">
+        <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
+            <ul style="padding: 0em; list-style-type: none;">
+                <li style="margin: 0.5em 0.5em 1em 0.5em;" *ngIf="(restaurantList | restaurantFilter: searchKeyword).length === 0">
+                    <i>No restaurants found for query "{{searchKeyword}}".</i>
+                </li>
+                <li *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
+                    <restaurant class="unselected" [name]="restaurant.name" [location]="restaurant.location"
+                        [dishcount]="restaurant.dishcount" (click)="toggleOverview()"
+                        (messageEvent)="receiveMessage($event)">
+                    </restaurant>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-    <p style="margin-bottom: 1em;"><i>AGM component commented out for now to reduce API calls</i></p>
-    <!-- <agm-map class="map-box rounded" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+    <!-- <p style="margin-bottom: 1em;"><i>AGM component commented out for now to reduce API calls</i></p> -->
+    <agm-map class="map-box rounded row full soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+        style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
         <span>Loading...</span>
         <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
-            [opacity]="r.alpha" (markerClick)="getMarker(r)">
+            [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
         </agm-marker>
-    </agm-map> -->
+    </agm-map>
 
     <div *ngIf="selectedRestaurant" class="row rounded">
         <div class="restaurant-view rounded">
@@ -46,27 +62,17 @@
             <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.lon}}</i></p>
         </div>
     </div>
-    
+
     <button style="width: 100%; margin-bottom: 1em" (click)="getAllRestaurants()">Test all retrieval</button>
     <button style="width: 100%; margin-bottom: 1em" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
 
-    <div>
+    <!-- debug -->
+    <!-- <div>
         <p>Testing response:</p>
         {{response}}
-    </div>
+    </div> -->
 
-    <div class="row">
-        <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
-            <ul style="padding: 0em; list-style-type: none;">
-                <li *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
-                    <restaurant class="unselected"
-                        [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
-                        (click)="toggleOverview()" (messageEvent)="receiveMessage($event)">
-                    </restaurant>
-                </li>
-            </ul>
-        </div>
-    </div>
+
 
 
 

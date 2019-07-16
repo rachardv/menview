@@ -22,6 +22,30 @@ export const restaurants = [
     "address": "University of British Columbia",
     "description": "",
     "rating": 0
+  },
+  {
+    "name": "test1",
+    "lat": 49.277900,
+    "lon": -122.917900,
+    "address": "University of British Columbia",
+    "description": "",
+    "rating": 0
+  },
+  {
+    "name": "test2",
+    "lat": 49.275741,
+    "lon": -122.916741,
+    "address": "University of British Columbia",
+    "description": "",
+    "rating": 0
+  },
+  {
+    "name": "test3",
+    "lat": 49.275761,
+    "lon": -122.915761,
+    "address": "University of British Columbia",
+    "description": "",
+    "rating": 0
   }
 ];
 
