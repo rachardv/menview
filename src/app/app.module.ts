@@ -19,6 +19,7 @@ import {
   HomeComponent,
   DishComponent,
   RestaurantComponent,
+  ReviewComponent,
   RestaurantPipe
 } from './home/';
 
@@ -42,6 +43,7 @@ import { RestaurantService } from './_services';
     HomeComponent,
     DishComponent,
     RestaurantComponent,
+    ReviewComponent,
     LoginComponent,
     RegisterComponent,
     AlertComponent,

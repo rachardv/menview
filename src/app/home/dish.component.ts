@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'dish',
@@ -21,4 +21,19 @@ export class DishComponent {
 
   @Input()
   isrc: string;
+
+  @Output()
+  readReview = new EventEmitter<string>();
+
+  @Output()
+  writeReview = new EventEmitter<string>();
+
+  read() {
+    this.readReview.emit(this.name);
+  }
+
+  write() {
+    this.writeReview.emit(this.name);
+  }
+
 }

@@ -3,10 +3,13 @@ import { trigger, style, animate, transition } from '@angular/animations';
 
 import { DishComponent } from './dish.component';
 import { RestaurantComponent } from './restaurant.component';
+import { ReviewComponent } from './review.component'
 
-import { RestaurantService } from '../_services'
+import { RestaurantService } from '../_services';
 
-import { restaurants, menus } from './sampleData'
+import { restaurants, menus } from './sampleData';
+import { reviews } from './sampleReviews';
+
 
 @Component({
   selector: 'app-home',
@@ -23,7 +26,13 @@ import { restaurants, menus } from './sampleData'
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [RestaurantService, DishComponent, RestaurantComponent]
+  providers:
+  [
+    RestaurantService,
+    DishComponent,
+    RestaurantComponent,
+    ReviewComponent
+  ]
 })
 export class HomeComponent implements OnInit {
 
@@ -41,10 +50,16 @@ export class HomeComponent implements OnInit {
   overview: boolean = true;
   overlay: boolean = false;
 
+  showDishes: boolean = true;
+  showReviews: boolean = false;
+
+
   currentRestaurantName: string;
+  currentDishName: string;
   selectedRestaurant: any;
 
   restaurantList: any = [];
+  reviewList: any = [];
 
 
   response: any = {
@@ -78,6 +93,24 @@ export class HomeComponent implements OnInit {
       }, 250);
     }
   }
+
+  toggleReviewList() {
+    if (this.showDishes) {
+      // ENABLE reviews
+      this.showDishes = !this.showDishes;
+
+      setTimeout(() => {
+        this.showReviews = !this.showReviews;
+      }, 250);
+    } else {
+      this.showReviews = !this.showReviews;
+
+      setTimeout(() => {
+        this.showDishes = !this.showDishes;
+      }, 250);
+    }
+  }
+
 
   getAllRestaurants() {
     this.loading = true;
@@ -137,7 +170,13 @@ export class HomeComponent implements OnInit {
   }
 
 
-  receiveMessage($event) {
+  getReviews(query: string) {
+    /* TODO: API CALL FOR REVIEWS FROM THIS DISH */
+    console.log("Getting reviews for " + query);
+    this.reviewList = reviews;
+  }
+
+  receiveMessage($event:any) {
     this.message = $event;
     this.updateMenu($event);
 
@@ -168,10 +207,37 @@ export class HomeComponent implements OnInit {
     this.menuActive = !this.menuActive;
   }
 
+  readReview($event:any) {
+    console.log("Read review called");
+    console.log($event);
+
+    this.currentDishName = $event;
+    
+    /* TODO: FETCH REVIEW FOR THIS DISH */
+    this.getReviews($event); //placeholder
+
+    /* TOGGLE REVIEW LIST VIEW */
+    this.toggleReviewList();
+  }
+
+  writeReview($event:any) {
+    console.log("Write review called");
+    console.log($event);
+
+    this.currentDishName = $event;
+
+    /* TODO: WRITE A REVIEW FOR THIS DISH */
+    this.getReviews($event); //placeholder
+
+
+    /* TOGGLE REVIEW LIST VIEW */
+    this.toggleReviewList();
+  }
+
   ngOnInit() {
     this.getAllRestaurants(); // load restaurant data on navigate
     
-    // // TODO: DELETE, DEBUG
+    // // DELETE, DEBUG
     // this.toggleOverview(); 
     // this.message = "Starbucks";
     // if (!this.menuActive) {

@@ -6,36 +6,65 @@
     <div class="overlay-nav">
         <ul>
             <li class="overlay-nav-element"><a href="#" (click)="toggleOverview()">Back to Restaurants</a></li>
-            <li><a>{{currentRestaurantName}}</a></li>
+            <li *ngIf="showDishes"><a>{{currentRestaurantName}}</a></li>
+            <li class="overlay-nav-element" *ngIf="showReviews"><a href="#"
+                    (click)="toggleReviewList()">{{currentRestaurantName}}</a></li>
+            <li *ngIf="showReviews"><a>{{currentDishName}}</a></li>
         </ul>
     </div>
 
-    <h2>{{currentRestaurantName}}</h2>
+    <div id="dish-list" *ngIf="showDishes">
+        <h3>{{currentRestaurantName}}</h3>
+        <div class="row">
+            <div *ngIf="menuActive" class="col">
+                <ul style="padding: 0em; list-style-type: none;">
+                    <li *ngFor="let menuItem of menuItems">
+                        <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
+                            [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
+                            [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <div class="row">
-        <div *ngIf="menuActive" class="col">
+    <div id="review-list" *ngIf="showReviews">
+        <h3>Reviews for {{currentDishName}} at {{currentRestaurantName}}</h3>
+        <div>
             <ul style="padding: 0em; list-style-type: none;">
-                <li *ngFor="let menuItem of menuItems">
-                    <dish [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
-                        [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
+                <li *ngFor="let review of reviewList">
+                    <review [review_id]="review.review_id" [rating]="review.rating" [username]="review.username"
+                        [dish_id]="review.dish_id" [review]="review.review"></review>
+                </li>
+                <li>
+                    <form style="width: 100%; height: 100%;">
+                        <textarea placeholder="Write a review" style="width: 100%; height: 100%;"></textarea>
+                        <input type="submit"/>
+                    </form>
                 </li>
             </ul>
         </div>
     </div>
+
 </div>
 
 <div id="overview" *ngIf="overview" [@fadeInOut]>
 
 
-    <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword" placeholder="Search for restaurants" />
+    <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword"
+        placeholder="Type a restaurant name here, or click one on the map!" />
 
-    <div class="row full soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}" style="float: left;">
+    <div class="row full soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}"
+        style="float: left;">
         <div class="col" [ngClass]="{'restaurant-card-shrunk': menuActive }">
-            <ul style="padding: 0em; list-style-type: none;">
-                <li style="margin: 0.5em 0.5em 1em 0.5em;" *ngIf="(restaurantList | restaurantFilter: searchKeyword).length === 0">
+            <ul
+                style="width: 100%; padding: 0em; list-style-type: none; max-height: 400px; overflow-y: scroll; overflow-x: hidden;">
+                <li style="width: 100%; margin: 0.5em 0.5em 1em 0.5em; padding-right: 1rem;"
+                    *ngIf="(restaurantList | restaurantFilter: searchKeyword).length === 0">
                     <i>No restaurants found for query "{{searchKeyword}}".</i>
                 </li>
-                <li *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
+                <li style="padding-right: 1rem;"
+                    *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
                     <restaurant class="unselected" [name]="restaurant.name" [location]="restaurant.location"
                         [dishcount]="restaurant.dishcount" (click)="toggleOverview()"
                         (messageEvent)="receiveMessage($event)">
@@ -45,14 +74,14 @@
         </div>
     </div>
 
-    <!-- <p style="margin-bottom: 1em;"><i>AGM component commented out for now to reduce API calls</i></p> -->
-    <agm-map class="map-box rounded row full soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+    <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p>
+    <!-- <agm-map class="map-box rounded row full soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
         style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
         <span>Loading...</span>
         <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
             [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
         </agm-marker>
-    </agm-map>
+    </agm-map> -->
 
     <div *ngIf="selectedRestaurant" class="row rounded">
         <div class="restaurant-view rounded">

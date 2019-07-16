@@ -4,8 +4,8 @@
 }
 
 .unselected {
-    opacity: 0.5;
-    transition: 100m;
+    opacity: 0.7;
+    transition: 100ms;
 }
 
 .selected, .unselected:hover {
@@ -13,14 +13,18 @@
 }
 
 
-.restaurant-card, .dish-card {
+.restaurant-card, .dish-card, .review-card {
     box-shadow: 0px 1px 1px 2px #CCCCCC;
     width: 100%;
-    margin: 0.5em 0.5em 1em 0.5em;
-    padding: 0.5em;
+    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    padding: 0.5rem;
     background-color: #FFFFFF;
     border-radius: .3em;
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
+}
+
+.review-card {
+    margin: 0.5rem 0rem;
 }
 
 .restaurant-card {

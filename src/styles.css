@@ -68,8 +68,8 @@ body {
 }
 
 .soft-transition {
-    transition: 150ms width;
-    transition: 250ms opacity;
+    transition: width 150ms;
+    transition: opacity 250ms;
     /* transition-timing-function: ease-in-out; */
 }
 
@@ -209,13 +209,13 @@ input:focus {
 }
 
 .split-small {
-    width: 35%;
-    max-width: 35%;
+    width: 40%;
+    max-width: 40%;
     opacity: 1;
 }
 
 .split-large {
-    width: 65%;
-    max-width: 65%;
+    width: 60%;
+    max-width: 60%;
     opacity: 1;
 }
