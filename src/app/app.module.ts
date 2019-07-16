@@ -18,7 +18,8 @@ import { AlertComponent } from './alert/alert.component';
 import {
   HomeComponent,
   DishComponent,
-  RestaurantComponent
+  RestaurantComponent,
+  RestaurantPipe
 } from './home/';
 
 /* Helpers */
@@ -44,7 +45,8 @@ import { RestaurantService } from './_services';
     LoginComponent,
     RegisterComponent,
     AlertComponent,
-    UserComponent
+    UserComponent,
+    RestaurantPipe
   ],
   imports: [
     BrowserModule,
