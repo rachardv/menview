@@ -6,13 +6,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Deployment Instruction
 ======================
 
-#For production:
+# For production:
 
 Run the following command to deploy the application (front-end served through nginx) with docker-compose:
 `docker-compose -f docker-compose-prod.yml up -d --build`
 
 
-#For development:
+# For development:
 
 Install Angular CLI 8.0.3 on your machine:
 `npm install -g @angular/cli@8.0.3`
