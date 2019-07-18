@@ -91,9 +91,14 @@ nav a, nav span {
     text-decoration: none !important;
 }
 
-input:focus {
+input:focus, textarea:focus, button:focus, .btn:focus {
     outline-width: 0;
-    box-shadow: 0 0 3px 1px #00ADE6;
+    box-shadow: 0 0 0.5rem 0.1rem rgba(22, 255, 255, 1);
+}
+
+.btn-alt:focus {
+    outline-width: 0;
+    box-shadow: 0 0 0.25rem 0.1rem rgba(255, 149, 15, 1);
 }
 
 nav, footer {
@@ -155,11 +160,16 @@ nav, footer {
 }
 
 .content-box {
-    background-color: rgba(245, 245, 245, 1);
-    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
+    background: transparent;
     height: 100%;
     min-height: 30rem;
     padding: 1rem;
+}
+
+.content-card {
+    background-color: rgba(245, 245, 245, 1);
+    padding: 1rem;
+    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
 }
 
 
@@ -238,7 +248,7 @@ nav, footer {
 }
 
 .split-small {
-    width: 40%;
+    min-width: 40%;
     max-width: 40%;
     opacity: 1;
 }
@@ -265,7 +275,7 @@ nav, footer {
 }
 
 .restaurant-li {
-    padding-right: 1rem;
+    margin-right: 0.5rem;
     z-index: 1;
 }
 
@@ -397,4 +407,17 @@ nav, footer {
 .cost-label {
     margin-left: 1em;
     color: #444444;
+}
+
+.rating {
+    user-select: none;
+}
+
+.review-textbox {
+    width: 100%;
+    min-height: 7rem;
+    height: 7rem;
+    resize: vertical;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(200,200,200,0.5);
 }

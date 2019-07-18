@@ -2,7 +2,7 @@
     <p style="position: fixed; top: 50%; width: 100%; text-align: center;">Loading...</p>
 </div>
 
-<section id="overlay" *ngIf="overlay" [@fadeInOut]>
+<section id="overlay" *ngIf="overlay" class="content-card rounded shadow" [@fadeInOut]>
     <div class="overlay-nav">
         <ul>
             <li class="overlay-nav-element"><a href="#" (click)="toggleOverview()">Back to Restaurants</a></li>
@@ -31,7 +31,7 @@
         </div>
 
         <div id="review-list" *ngIf="showReviews">
-            <h3>Reviews for {{currentDishName}} at {{currentRestaurantName}}</h3>
+            <h3 >Reviews for {{currentDishName}} at {{currentRestaurantName}}</h3>
             <div>
                 <ul style="padding: 0em; list-style-type: none;">
                     <li *ngFor="let review of reviewList" style="margin: 0rem 0rem 0.5rem 0rem;">
@@ -40,7 +40,7 @@
                     </li>
                     <li>
                         <form style="width: 100%; height: 100%;">
-                            <textarea placeholder="Write a review" style="width: 100%; height: 100%;"></textarea>
+                            <textarea class="review-textbox rounded" placeholder="Write a review"></textarea>
                             <input type="submit" />
                         </form>
                     </li>
@@ -53,48 +53,55 @@
 </section>
 
 <section id="overview" *ngIf="overview" [@fadeInOut]>
-
-    <div class="full-width center">
-        <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword"
-            placeholder="Type a restaurant name here, or click one on the map!" />
-    </div>
-
-    <div class="soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}" style="float: left;">
-        <ul class="restaurant-ul">
-            <li style="width: 100%; margin: 0.5em 0.5em 1em 0.5em; padding-right: 1rem;"
-                *ngIf="(restaurantList | restaurantFilter: searchKeyword).length === 0">
-                <i>No restaurants found for query "{{searchKeyword}}".</i>
-            </li>
-            <li class="restaurant-li clickable"
-                *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
-                <restaurant [name]="restaurant.name" [location]="restaurant.location" [dishcount]="restaurant.dishcount"
-                    (click)="toggleOverview()" (messageEvent)="receiveMessage($event)">
-                </restaurant>
-            </li>
-        </ul>
-
-    </div>
-
-    <!-- <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p> -->
-    <agm-map class="map-box rounded full soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
-        style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
-        <span>Loading...</span>
-        <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
-            [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
-        </agm-marker>
-    </agm-map>
-
-    <div *ngIf="selectedRestaurant" class="rounded">
-        <div class="restaurant-view rounded">
-            <span class="restaurant-name">{{selectedRestaurant.name}}</span>
-            <span class="right-text">Dishes: {{selectedRestaurant.dishcount}}</span>
-            <hr class="divider">
-            <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.lon}}</i></p>
+    <div style="margin: 0rem 0rem 2rem 0rem">
+        <div class="rounded shadow">
+            <div class="full-width center">
+                <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword"
+                    placeholder="Type a restaurant name here, or click one on the map!" />
+            </div>
         </div>
     </div>
 
-    <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">Test all retrieval</button>
-    <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
+
+    <div class="content-card rounded shadow">
+        <div class="soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}"
+            style="float: left;">
+            <ul class="restaurant-ul">
+                <li style="width: 100%; margin: 0.5em 0.5em 1em 0.5em; padding-right: 1rem;"
+                    *ngIf="(restaurantList | restaurantFilter: searchKeyword).length === 0">
+                    <i>No restaurants found for query "{{searchKeyword}}".</i>
+                </li>
+                <li class="restaurant-li clickable"
+                    *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
+                    <restaurant [name]="restaurant.name" [location]="restaurant.location"
+                        [dishcount]="restaurant.dishcount" (click)="toggleOverview()"
+                        (messageEvent)="loadMenuForRestaurant($event)">
+                    </restaurant>
+                </li>
+            </ul>
+        </div>
+
+        <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p>
+        <!-- <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+            style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+            <span>Loading...</span>
+            <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
+                [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
+            </agm-marker>
+        </agm-map> -->
+
+        <div *ngIf="selectedRestaurant" class="rounded">
+            <div class="restaurant-view rounded">
+                <span class="restaurant-name">{{selectedRestaurant.name}}</span>
+                <span class="right-text">Dishes: {{selectedRestaurant.dishcount}}</span>
+                <hr class="divider">
+                <p>Located at: <i>{{selectedRestaurant.lat}}, {{selectedRestaurant.lon}}</i></p>
+            </div>
+        </div>
+
+        <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">Test all retrieval</button>
+        <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
+    </div>
 
     <!-- debug -->
     <!-- <div>

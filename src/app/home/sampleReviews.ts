@@ -18,7 +18,7 @@ export const reviews = [
     "rating": 2,
     "username": "HarshFoodCritic",
     "dish_id": 1,
-    "review": "It was a good attempt but qiute unsatisfactory given the price."
+    "review": "It was a good attempt but quite unsatisfactory given the price."
   },
   {
     "review_id": 4,

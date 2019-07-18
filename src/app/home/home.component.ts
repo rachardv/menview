@@ -176,7 +176,7 @@ export class HomeComponent implements OnInit {
     this.reviewList = reviews;
   }
 
-  receiveMessage($event:any) {
+  loadMenuForRestaurant($event:any) {
     this.message = $event;
     this.updateMenu($event);
 
