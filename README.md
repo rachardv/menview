@@ -66,7 +66,11 @@ A database tables can be found in flask_api/models.py
 
 2. query via `0.0.0.0/restaurants/white spot` or similar GET request
 
-3. Dishes endpoint MUST be queried with a restaurant_name `http://127.0.0.1:5000/dishes/?restaurant_name=burger%20king` In the final project a username will be optional.
+3. Dishes endpoint MUST be queried with a restaurant_name `http://127.0.0.1:5000/dishes/?restaurant_name=burger%20king`
+and have the option to be queried with a username to sort the returned dishes by user recommendation.
+
+For example, `http://127.0.0.1:5000/dishes/?restaurant_name=burger%20king&username=austin` will return the menu items 
+from burger king sorted by austin's recommendation with the first item being the most recommended item. 
 
 4. Reviews endpoint MUST be queried with a username `http://127.0.0.1:5000/reviews/?username=bob`.
 
@@ -121,3 +125,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+Known Issues
+============
+
+1. When running docker-compose build the python library `rake-nltk` will fail to build its wheel but will later be installed successfully. This has no observable effect on the built docker containers (that we know of). 

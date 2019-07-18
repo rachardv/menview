@@ -1,7 +1,4 @@
-FROM python:3.6-alpine
-
-RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
-RUN apk add --update bash && rm -rf /var/cache/apk/*
+FROM python:3.7
 
 COPY requirements_flask.txt .
 COPY wait.sh .
@@ -9,9 +6,7 @@ COPY flask_api .
 
 RUN chmod +x wait.sh
 
-
-RUN pip3 install -r requirements_flask.txt
-
+RUN pip3 install -U -r requirements_flask.txt
 
 EXPOSE 5000
 

@@ -1,6 +1,7 @@
 from flask import request
-from models import Dish
+from models import Dish, Review
 from db import session
+from recommender import recommend
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
 
 dish_fields = {
@@ -8,7 +9,7 @@ dish_fields = {
     'dish_description': fields.String,
     'dish_rating': fields.Integer,
     'dish_id': fields.Integer,
-    'retaurant_name': fields.String
+    'restaurant_name': fields.String
 }
 
 
@@ -58,10 +59,16 @@ class DishListResource(Resource):
     @marshal_with(dish_fields)
     def get(self):
         parsed_args = parser.parse_args()
-
-        #dish = session.query(Dish).filter(Dish.dish_id == dish_id).first()
         restaurant_name = parsed_args['restaurant_name']
         dishes = session.query(Dish).filter(Dish.restaurant_name == restaurant_name).all()
+
+        # return recommended dish's back if a user is specified AND they have atleast one review  
+        username = parsed_args['username']
+        if(username != 'None'):
+            reviewed_dishes = session.query(Dish, Review).join(Review).filter(Review.username == username).all()
+            if reviewed_dishes:
+                dishes = recommend(dishes, reviewed_dishes)
+
         return dishes
 
     @marshal_with(dish_fields)
