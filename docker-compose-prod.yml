@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  flask_api:
+    container_name: flask_api
+    build:
+      context: .
+      dockerfile: Dockerfile-flask
+    ports:
+        - '5000:5000'
+    depends_on:
+      - db
+
+  prod:
+    container_name: menview-dev
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    ports:
+        - 8080:80
+
+  # database server
+  db:
+    image: "postgres:latest"
+    volumes:
+      - db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: admin
+      POSTGRES_DB: menviewdb 
+    
+volumes:
+  db:
+

@@ -3,8 +3,16 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
 
-Instructions for Development Environment Setup
-==============================================
+Deployment Instruction
+======================
+
+#For production:
+
+Run the following command to deploy the application (front-end served through nginx) with docker-compose:
+`docker-compose -f docker-compose-prod.yml up -d --build`
+
+
+#For development:
 
 Install Angular CLI 8.0.3 on your machine:
 `npm install -g @angular/cli@8.0.3`
@@ -32,7 +40,8 @@ Note that you can verify if you have successfully added the data by running: `do
 
 The password is again "secret"
 
-Because tha database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the database volume and remove any data. 
+Because the database is set up in a semi-permanent volume you need to run `docker-compose down -v` to delete the database volume and remove any data. 
+
 
 Flask REST-API
 ===============
@@ -81,7 +90,7 @@ Troubleshooting
 Resources Used & Attribution
 ============================
 
-Dockerization of the Angular layer uses the following tutorial and modifies code provided by [Michael Herman](https://mherman.org/blog/dockerizing-an-angular-app/).
+Dockerization of the Angular layer uses the following tutorial and modifies code provided by [Michael Herman](https://mherman.org/blog/dockerizing-an-angular-app/) (development) and [Aslan Vatsaev](https://dev.to/avatsaev/create-efficient-angular-docker-images-with-multi-stage-builds-1f3n) (production).
 
 Template code for authentication services and back-end integration is originally written by [Jason Watmore](https://jasonwatmore.com/post/2019/06/10/angular-8-user-registration-and-login-example-tutorial). The project repository can be cloned from [here](https://github.com/cornflourblue/angular-8-registration-login-example).
 

@@ -81,14 +81,14 @@
             </ul>
         </div>
 
-        <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p>
-        <!-- <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+        <!-- <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p> -->
+        <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
             style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
             <span>Loading...</span>
             <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
                 [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
             </agm-marker>
-        </agm-map> -->
+        </agm-map>
 
         <div *ngIf="selectedRestaurant" class="rounded">
             <div class="restaurant-view rounded">
