@@ -1,24 +1,36 @@
-<h2>Login</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
+<section id="login-card" class="content-card rounded shadow" [@fadeInOut]>
+
+    <div class="overlay-nav">
+        <ul>
+            <li><h3 style="margin: 0rem; padding: 0rem;">Login</h3></li>
+        </ul>
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-        </div>
+
+    <div id="login-card-content" class="overlay-content">
+        <form [formGroup]="loginForm" class="full-width" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input type="text" placeholder="Username" formControlName="username"
+                    class="form-control input-bar rounded" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Password" formControlName="password"
+                    class="form-control input-bar rounded"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                </div>
+            </div>
+            <div class="form-group" style="width: 100%">
+                <div *ngIf="f.username.errors?.required && f.username.dirty">Username is required</div>
+                <div *ngIf="f.password.errors?.required && f.password.dirty">Password is required</div>
+                <button [disabled]="loading || f.username.errors?.required" class="btn-alt full-width rounded shadow">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Sign In
+                </button>
+
+                <p>Don't have an account? <a [routerLink]="['/register']">Sign up</a>.</p>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Login
-        </button>
-        <a routerLink="/register" class="btn btn-link">Register</a>
-    </div>
-</form>
+</section>

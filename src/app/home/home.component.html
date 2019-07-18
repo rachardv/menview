@@ -1,4 +1,4 @@
-<div id="loading-spinner" *ngIf="loading" [@fadeInOut] class="loading-spinner">
+<div id="loading-spinner" *ngIf="loading" [@fadeInOut] class="loading-spinner"  [@fadeInOut]>
     <p style="position: fixed; top: 50%; width: 100%; text-align: center;">Loading...</p>
 </div>
 
@@ -56,7 +56,7 @@
     <div style="margin: 0rem 0rem 2rem 0rem">
         <div class="rounded shadow">
             <div class="full-width center">
-                <input class="search-bar rounded" type="text" [(ngModel)]="searchKeyword"
+                <input id="search-bar" class="input-bar rounded" type="text" [(ngModel)]="searchKeyword"
                     placeholder="Type a restaurant name here, or click one on the map!" />
             </div>
         </div>
@@ -81,14 +81,14 @@
             </ul>
         </div>
 
-        <!-- <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p> -->
-        <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+        <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p>
+        <!-- <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
             style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
             <span>Loading...</span>
             <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
                 [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
             </agm-marker>
-        </agm-map>
+        </agm-map> -->
 
         <div *ngIf="selectedRestaurant" class="rounded">
             <div class="restaurant-view rounded">

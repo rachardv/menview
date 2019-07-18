@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap');
-
 * {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
@@ -56,7 +55,6 @@ footer {
     min-height: 3rem;
 }
 
-
 nav {
     position: fixed;
     top: 0rem;
@@ -64,8 +62,8 @@ nav {
     padding: 0rem;
     z-index: 1;
     background-color: rgba(245, 245, 245, 1);
-    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
-    box-shadow: 1px 2px 1em 2px rgba(50,50,50,0.5);
+    background: linear-gradient(0deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    box-shadow: 1px 2px 1em 2px rgba(50, 50, 50, 0.5);
 }
 
 nav>ul {
@@ -106,6 +104,7 @@ nav, footer {
 }
 
 /* COLOUR PALETTE */
+
 .c1 {
     color: rgba(0, 90, 129, 1);
 }
@@ -128,6 +127,17 @@ nav, footer {
 
 /* CLASSES & IDs BELOW */
 
+#login-card, #register-card {
+    max-width: 32rem;
+    margin: auto;
+    text-align: center;
+}
+
+#login-card-content, #register-card-content {
+    max-width: 24rem;
+    margin: 3rem auto auto auto;
+}
+
 .rounded {
     border-radius: 0.5em !important;
 }
@@ -138,7 +148,6 @@ nav, footer {
 
 #site-title {
     margin-right: 1rem;
-    font-size: 2.5rem;
     color: white;
     font-weight: bold;
 }
@@ -148,13 +157,13 @@ nav, footer {
 }
 
 .site-title-text {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-decoration: none;
 }
 
 .pseudo-main {
     /* adjust top margin for content box offset from top (to account for navbar) */
-    margin: 7rem 0rem 0rem 0rem;
+    margin: 5.5rem 0rem 0rem 0rem;
     padding: 0rem 1rem 2rem 1rem;
     background: transparent;
 }
@@ -162,16 +171,15 @@ nav, footer {
 .content-box {
     background: transparent;
     height: 100%;
-    min-height: 30rem;
+    min-height: 100%;
     padding: 1rem;
 }
 
 .content-card {
     background-color: rgba(245, 245, 245, 1);
     padding: 1rem;
-    background: linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,1) 100%);
+    background: linear-gradient(0deg, rgba(245, 245, 245, 1) 0%, rgba(255, 255, 255, 1) 100%);
 }
-
 
 .btn, .btn-alt {
     background-color: rgba(0, 173, 230, 1);
@@ -196,24 +204,22 @@ nav, footer {
 }
 
 .btn:active, .btn-alt:active {
-    box-shadow: inset 0px 0px 0.5rem rgba(200,200,200, 0.8);
+    box-shadow: inset 0px 0px 0.5rem rgba(200, 200, 200, 0.8);
     opacity: 1;
 }
-
-
 
 .nav-btn {
     color: white !important;
     font-weight: bold !important;
     position: fixed;
     right: 1rem;
-    top: 1rem;
+    top: 0.5rem;
     margin: 0rem;
     padding: 1rem;
     min-width: 9rem;
 }
 
-.search-bar {
+.input-bar {
     padding: 1rem 0.5rem;
     width: 100%;
     box-shadow: none;
@@ -280,13 +286,13 @@ nav, footer {
 }
 
 .card {
-    border: 1px solid rgba(200,200,200, 0.8);
+    border: 1px solid rgba(200, 200, 200, 0.8);
     width: 100%;
     padding: 0.5rem 1rem;
     margin: 0rem 0rem 1rem 0rem;
     opacity: 1;
     text-align: left;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 100%);
 }
 
 .clickable:hover {
@@ -295,7 +301,7 @@ nav, footer {
 }
 
 .clickable:active {
-    box-shadow: inset 0px 0px 0.5rem rgba(200,200,200, 0.8);
+    box-shadow: inset 0px 0px 0.5rem rgba(200, 200, 200, 0.8);
     opacity: 1;
 }
 
@@ -318,7 +324,7 @@ nav, footer {
     width: 100vw;
     height: 100vh;
     z-index: 2;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .overlay-nav {
@@ -354,6 +360,7 @@ nav, footer {
 }
 
 /* TODO: refactor these CSS classes */
+
 .restaurant-name, .dish-name {
     font-weight: bold;
     color: black;
@@ -365,7 +372,7 @@ nav, footer {
     margin: 1em;
     width: 100%;
     box-shadow: 0px 1px 1px 2px #CCCCCC;
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0.5) 100%); 
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 100%);
 }
 
 .dish-image {
@@ -409,8 +416,16 @@ nav, footer {
     color: #444444;
 }
 
-.rating {
+.review-header {
+    margin: 0rem -1rem;
+    padding: 0rem 1rem;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.8);
+}
+
+.review-rating {
     user-select: none;
+    font-size: 1.3rem;
+    line-height: 1rem;
 }
 
 .review-textbox {
@@ -419,5 +434,9 @@ nav, footer {
     height: 7rem;
     resize: vertical;
     padding: 0.5rem 1rem;
-    border: 1px solid rgba(200,200,200,0.5);
+    border: 1px solid rgba(200, 200, 200, 0.8);
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
 }

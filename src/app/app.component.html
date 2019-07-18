@@ -8,7 +8,8 @@
         <a class="btn nav-btn rounded" *ngIf="currentUser" (click)="logout()" href="#">Logout</a>
     </li>
     <li>
-        <a class="btn nav-btn rounded" *ngIf="!currentUser" href="/login">Sign In</a> 
+        <!-- <a class="btn nav-btn rounded" *ngIf="!currentUser" href="#/login">Sign In</a>  -->
+        <a class="btn nav-btn rounded" *ngIf="!currentUser" href="#" [routerLink]="['/login']">Sign In</a> 
     </li>
     <!-- add nav bar links here -->
     <!-- <li>
