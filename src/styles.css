@@ -128,16 +128,22 @@ nav, footer {
 
 /* CLASSES & IDs BELOW */
 
-#login-card, #register-card {
+#login-card, #register-card, #user-card {
     max-width: 32rem;
     margin: auto;
     text-align: center;
 }
 
-#login-card-content, #register-card-content {
+#login-card-content, #register-card-content, #user-card-content {
     max-width: 24rem;
     margin: 3rem auto auto auto;
 }
+
+#user-card-content {
+    max-width: 24rem;
+    margin: 2rem auto auto auto;
+}
+
 
 .rounded {
     border-radius: 0.5em !important;
@@ -218,6 +224,13 @@ nav, footer {
     margin: 0rem;
     padding: 1rem;
     min-width: 9rem;
+}
+
+.nav-btn-menu {
+    min-width: 3.5rem;
+    border-radius: 9rem !important;
+    line-height: 1.5rem;
+    font-size: 1.7rem;
 }
 
 .input-bar {
