@@ -12,6 +12,7 @@ html, body {
     padding: 0rem;
     scroll-behavior: smooth;
     min-height: 100%;
+    min-width: 320px;
 }
 
 body {
@@ -439,4 +440,27 @@ nav, footer {
 
 .form-control {
     margin-bottom: 0.5rem;
+}
+
+
+
+/* responsive design + media queries */
+
+
+.res-hide {
+    display: initial;
+}   
+
+.res-show {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .res-show {
+        display: initial;
+    }
+
+    .res-hide {
+        display: none;
+    }
 }

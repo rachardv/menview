@@ -1,4 +1,4 @@
-<nav>
+<nav class="full-width" style="min-width: 320px;">
   <ul>
     <li>
         <a id="site-title" [ngClass]="{'disabled': isActive('/')}" class="nav-item" routerLink="/">
@@ -9,7 +9,8 @@
     </li>
     <li>
         <!-- <a class="btn nav-btn rounded" *ngIf="!currentUser" href="#/login">Sign In</a>  -->
-        <a class="btn nav-btn rounded" *ngIf="!currentUser" href="#" [routerLink]="['/login']">Sign In</a> 
+        <a class="btn nav-btn rounded res-hide" *ngIf="!currentUser" href="#" [routerLink]="['/login']">Sign In</a> 
+        <a class="btn nav-btn rounded res-show" *ngIf="!currentUser" href="#" [routerLink]="['/user']">&#9776;</a> 
     </li>
     <!-- add nav bar links here -->
     <!-- <li>
