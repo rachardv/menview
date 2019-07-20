@@ -4,6 +4,7 @@ from db import session
 from recommender import recommend
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
 
+
 dish_fields = {
     'dish_name': fields.String,
     'dish_description': fields.String,

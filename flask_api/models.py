@@ -5,9 +5,13 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
 #DB_URI = 'sqlite:///./main.db'
+#DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
 DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
+
+
 Base = declarative_base()
+
 
 
 class Review(Base):
@@ -18,8 +22,7 @@ class Review(Base):
     username = Column(String(20), ForeignKey("users.username"), nullable=False)
     dish_id = Column(Integer, ForeignKey("dishes.dish_id"), nullable=False)
     review = Column(String(200))
-
-
+                
 class Restaurant(Base):
     __tablename__ = 'restaurants'
 
@@ -34,8 +37,9 @@ class User(Base):
     __tablename__= 'users'
     
     username = Column(String(20), primary_key=True)
-    email = Column(String(50), unique=True, nullable=False)
+    email = Column(String(50), nullable=False)
     password = Column(String(30), nullable=False)
+    account_type = Column(String(10), nullable=True)
 #    file = Column(String(60))
 
 class Dish(Base):
