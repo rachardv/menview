@@ -195,8 +195,8 @@ nav, footer {
     color: white;
     min-width: 6.5rem;
     text-align: center;
+    margin-top:1rem;
     border: none;
-    margin-top: 1rem;
     box-shadow: 3px 3px 5px -2px rgba(50, 50, 50, 0.5);
 }
 

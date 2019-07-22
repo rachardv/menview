@@ -60,9 +60,10 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
-
         this.loading = true;
-        this.userService.register(this.registerForm.value)
+
+        let  user = this.registerForm.value
+        this.authenticationService.register(user.username, user.password, user.email)
             .pipe(first())
             .subscribe(
                 data => {
@@ -70,7 +71,7 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['/login'], { queryParams: { registered: true }});
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error.Reason);
                     this.loading = false;
                 });
     }

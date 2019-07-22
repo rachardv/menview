@@ -10,3 +10,4 @@ rake-nltk
 scikit-learn[alldeps]
 waitress
 flask_jwt_extended
+pbkdf2_sha256

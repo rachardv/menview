@@ -11,6 +11,7 @@ import { User } from './_models/user';
 export class AppComponent {
   
   currentUser: User;
+  x:string = "hi"
 
   constructor(
     private router: Router,

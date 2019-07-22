@@ -5,8 +5,8 @@
             <li><h3 style="margin: 0rem; padding: 0rem;">Login</h3></li>
         </ul>
     </div>
-
     <div id="login-card-content" class="overlay-content">
+        <alert></alert>
         <form [formGroup]="loginForm" class="full-width" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <input type="text" placeholder="Username" formControlName="username"

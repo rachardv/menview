@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,6 @@ import {
   Globals,
   JwtInterceptor,
   ErrorInterceptor,
-  fakeBackendProvider // will remove later
 } from './_helpers/';
 
 
@@ -56,13 +56,13 @@ import { RestaurantService } from './_services';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDfpSDY2JRmlLiTUI5tKUw1wiGyEGR1qys' /* registered to mikhelvin@hotmail.com -> please don't share this API key!! */
     })
   ],
   providers: [
-    fakeBackendProvider, //will remove later
     Globals,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
@@ -80,14 +80,5 @@ export class AppModule {
 ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 }
-
-logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-}
-
-
-
-
 
 }

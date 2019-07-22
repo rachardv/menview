@@ -3,7 +3,7 @@ from models import User
 from db import session
 from datetime import datetime
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
-
+from passlib.hash import pbkdf2_sha256 as sha256
 from flask_jwt_extended import (create_access_token, 
                                 create_refresh_token, 
                                 jwt_required, 
@@ -85,17 +85,16 @@ class UserRegistration(Resource): #this post resource is only for regular regist
             user = User(
             username=parsed_args['username'], 
             email=parsed_args['email'],
-            password=parsed_args['password'],
-            account_type="menview")
+            password=sha256.hash(parsed_args['password'])
+            )
 
             #check is user exists
             if session.query(User).filter(User.username == parsed_args['username']).first():
                 raise Exception("Username {} already exists".format(parsed_args['username']))
 
             #generate tokens
-            access_token = create_access_token(identity = User.username)
-            refresh_token = create_refresh_token(identity = User.username)
-
+            access_token = create_access_token(identity = parsed_args['username'])
+            refresh_token = create_refresh_token(identity = parsed_args['username'])
             #save to db
             session.add(user)
             session.commit()
@@ -103,8 +102,9 @@ class UserRegistration(Resource): #this post resource is only for regular regist
         except Exception as e:
             return {'Error Message': 'User failed to be registered',
                     'Reason': '{}'.format(e)}, 409
-
+                    
         return {'Message':'User {} successfully registered'.format(user.username),
+                'username':  user.username,
                 'access_token': access_token,
                 'refresh_token': refresh_token
                 }, 201
@@ -118,12 +118,13 @@ class UserLogin(Resource):
             if not user:
                 raise Exception("Username {} does not exists".format(parsed_args['username']))
 
-            if parsed_args['password'] == user.password: #password is hashed in client (SHA256)
+            if sha256.verify(parsed_args['password'], user.password): #password is hashed (SHA256)
                 #generate tokens
                 access_token = create_access_token(identity = parsed_args['username'])
                 refresh_token = create_refresh_token(identity = parsed_args['username'])
                 #return
                 return {'message': 'Logged in as {}'.format(user.username),
+                        'username': user.username,
                         'access_token': access_token,
                         'refresh_token': refresh_token}, 200
             else:

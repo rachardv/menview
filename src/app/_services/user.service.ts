@@ -8,22 +8,22 @@ export class UserService {
 
     constructor(private http: HttpClient) {
 
-        this.apiUrl = JSON.stringify({
-            apiUrl: 'http://localhost:4000'
-        })
+        // this.apiUrl = JSON.stringify({
+        //     apiUrl: 'http://localhost:4000'
+        // })
      }
 
 
 
-    getAll() {
-        return this.http.get<any[]>(this.apiUrl+`/users`);
-    }
+    // getAll() {
+    //     return this.http.get<any[]>(this.apiUrl+`/users`);
+    // }
 
-    register(user) {
-        return this.http.post(this.apiUrl+`/users/register`, user);
-    }
+    // register(user) {
+    //     return this.http.post(this.apiUrl+`/users/register`, user);
+    // }
  
-    delete(id) {
-        return this.http.delete(this.apiUrl+`/users/${id}`);
-    }
+    // delete(id) {
+    //     return this.http.delete(this.apiUrl+`/users/${id}`);
+    // }
 }

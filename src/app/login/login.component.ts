@@ -24,8 +24,8 @@ import { AuthenticationService, AlertService } from '../_services'
 
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
-    loading = false;
-    submitted = false;
+    loading = false; //this is used to display spinner and disable login button
+    submitted = false; //used to display validation errors after first submission is attempted
     returnUrl: string;
 
     constructor(
@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
 
         // reset alerts on submit
         this.alertService.clear();
-        
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
@@ -73,8 +72,9 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.alertService.error(error.Reason)
                     this.loading = false;
                 });
+
     }
 }
