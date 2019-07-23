@@ -1,4 +1,5 @@
 from flask import request, jsonify, make_response
+import requests
 from models import User
 from db import session
 from datetime import datetime
@@ -20,15 +21,12 @@ user_fields = {
 
 parser = reqparse.RequestParser()
 
-
 #parse args for user                                                                                                                                                                 
 parser.add_argument('username')
 parser.add_argument('email')
 parser.add_argument('password')
+parser.add_argument('idToken')
 #parser.add_argument('file')
-
-
-
 
 class UserResource(Resource):
     @marshal_with(user_fields)
@@ -146,7 +144,7 @@ class SecretResource(Resource):
         except Exception as e:
             return {
                 'Error Message': 'JWT failed to be verified',
-                'Reason': e    
+                'Reason': '{}'.format(e)   
             }, 401
 
 class TokenRefresh(Resource):
@@ -158,6 +156,46 @@ class TokenRefresh(Resource):
             'Message': 'Token Refreshed',
             'jwt_identity': current_user,
             'access_token': access_token}, 200
+
+
+class OauthLogin(Resource):
+    def post(self):
+        try:
+            parsed_args = parser.parse_args()
+            oAuthToken = parsed_args["idToken"]
+
+            #confirm authorization from oAuth
+            URL = "https://oauth2.googleapis.com/tokeninfo"
+            PARAMS = {"id_token" : oAuthToken}
+            resp = requests.get(url = URL, params = PARAMS)
+            
+            if resp.status_code != 200:
+                raise Exception("OAuth token is invalid")
+
+            
+            #checks if user has account with same email. if so automaatically link
+            respJson = resp.json()
+            user = session.query(User).filter(User.email == respJson["email"]).first()
+            if not user:
+                user = User(
+                    username= "{first} {last}".format(first=respJson["given_name"],last=respJson["family_name"]), 
+                    email=respJson["email"],
+                    password="")
+                session.add(user)
+                session.commit()
+
+            access_token = create_access_token(identity = user.username)
+            refresh_token = create_refresh_token(identity = user.username)
+            return {'message': 'Logged in as {}'.format(user.username),
+                    'username': user.username,
+                    'access_token': access_token,
+                    'refresh_token': refresh_token}, 200
+
+        except Exception as e:
+            return {
+                'Error Message': 'OAuth Login failed',
+                'Reason': '{}'.format(e)  
+            }, 401
 
 
         

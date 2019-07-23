@@ -8,11 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 # DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
 DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
-
-
 Base = declarative_base()
-
-
 
 class Review(Base):
     __tablename__='reviews'
@@ -37,7 +33,7 @@ class User(Base):
     __tablename__= 'users'
     
     username = Column(String(20), primary_key=True)
-    email = Column(String(50), nullable=False)
+    email = Column(String(50), primary_key=True)
     password = Column(String(256), nullable=False)
 #    file = Column(String(60))
 

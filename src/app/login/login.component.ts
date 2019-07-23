@@ -77,4 +77,18 @@ export class LoginComponent implements OnInit {
                 });
 
     }
+
+    googleSignIn(){
+        this.submitted=this.loading=true;
+        this.authenticationService.googleLogin()
+        .pipe(first())
+        .subscribe(
+            data => {
+                this.router.navigate([this.returnUrl]);
+            },
+            error => {
+                this.alertService.error(error.Reason)
+                this.loading = false;
+            });   
+    }
 }

@@ -7,7 +7,7 @@
     </div>
     <div id="login-card-content" class="overlay-content">
         <alert></alert>
-        <form [formGroup]="loginForm" class="full-width" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm" class="full-width">
             <div class="form-group">
                 <input type="text" placeholder="Username" formControlName="username"
                     class="form-control input-bar rounded" [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
@@ -24,11 +24,13 @@
             <div class="form-group" style="width: 100%">
                 <div *ngIf="f.username.errors?.required && f.username.dirty">Username is required</div>
                 <div *ngIf="f.password.errors?.required && f.password.dirty">Password is required</div>
-                <button [disabled]="loading || f.username.errors?.required" class="btn-alt full-width rounded shadow">
+                <button [disabled]="loading || f.username.errors?.required" class="btn-alt full-width rounded shadow" (click)="onSubmit()">
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Sign In
                 </button>
-
+                <button [disabled]="loading" class="btn-alt full-width rounded shadow" (click)="googleSignIn()">
+                    Sign in with Google
+                </button>
                 <p>Don't have an account? <a [routerLink]="['/register']">Sign up</a>.</p>
             </div>
         </form>

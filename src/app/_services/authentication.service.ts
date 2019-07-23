@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
 
 import { User } from '../_models/user'
 
@@ -18,7 +20,8 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
-    private globals: Globals
+    private globals: Globals,
+    private authService: AuthService,
   ) {
     /* REPLACE USER AUTHENTICATION WITH API CALL */
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -31,7 +34,7 @@ export class AuthenticationService {
   }
 
   login(username, password) {
-
+    localStorage.removeItem('currentUser');
     return this.http.post<any>(this.apiUrl + `/login`, { username, password })
       .pipe(
         map(user => {
@@ -44,6 +47,10 @@ export class AuthenticationService {
 
   }
 
+  oAuthLogin(idToken){
+    return this.http.post<any>(this.apiUrl+'/OauthLogin', {idToken})
+  }
+
   logout() {
     // remove user from local storage and set current user to null
     localStorage.removeItem('currentUser');
@@ -54,5 +61,27 @@ export class AuthenticationService {
     return this.http.post<any>(this.apiUrl+'/registration', {username, password, email})
   }
 
+  googleLogin(){
+    let idToken:string
+    localStorage.removeItem('currentUser');
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.authState.subscribe(
+      user => {
+        console.log(user)
+        idToken = user["idToken"]
+      })
+
+    return this.http.post<any>(this.apiUrl+'/OauthLogin', {idToken})
+      .pipe(
+        map(user => {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+        })
+      );
+  }
+
+  
 
 }

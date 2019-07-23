@@ -11,7 +11,7 @@ from waitress import serve
 from flask_jwt_extended import JWTManager
 
 
-from resources.user_resource import UserRegistration, UserLogin, TokenRefresh, SecretResource
+from resources.user_resource import OauthLogin, UserRegistration, UserLogin, TokenRefresh, SecretResource
 
 app = Flask(__name__)
 CORS(app, origins="*", allow_headers=[
@@ -44,7 +44,7 @@ api.add_resource(UserLogin, '/login')
 # api.add_resource(UserLogoutRefresh, '/logout/refresh')
 api.add_resource(TokenRefresh, '/token/refresh')
 api.add_resource(SecretResource, '/secret') #use this to test jwt validation
-
+api.add_resource(OauthLogin, '/OauthLogin')
 
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=5000)
