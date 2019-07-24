@@ -74,6 +74,30 @@ from burger king sorted by austin's recommendation with the first item being the
 
 4. Reviews endpoint MUST be queried with a username `http://127.0.0.1:5000/reviews/?username=bob`.
 
+## Using JWT tokens
+
+1. JWT tokens are meant to in the Authorization header and should always be prepended with "Bearer "
+
+2. They are encoded with a payload that contains user identity. Copy and paste to see what is encoded: https://jwt.io/
+
+#How to obtain a JWT Token
+
+1. Create account if you have not created one already. 
+Can be done through front end/sending POST with username, password, email to localhost:5000/registration
+
+2. Login by sending POST to localhost:5000/login with user and password. Token in response payload
+
+3. To verify if its a valid token go to localhost:5000/secret. 
+Send POST with token as "Authroization" header.
+
+#How to lock a flask API endpoint
+
+1. Add the python decorator "@jwt_required" to flask resource. 
+Sample can be seen in Secret Resource in user_resource.py
+
+
+
+
 # Troubleshooting
 
 **docker-compose:**
@@ -131,3 +155,5 @@ Known Issues
 ============
 
 1. When running docker-compose build the python library `rake-nltk` will fail to build its wheel but will later be installed successfully. This has no observable effect on the built docker containers (that we know of). 
+
+

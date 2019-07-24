@@ -67,7 +67,7 @@ export class AuthenticationService {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe(
       user => {
-        console.log(user)
+        console.log(user) //comment out later
         idToken = user["idToken"]
       })
 

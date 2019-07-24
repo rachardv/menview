@@ -5,8 +5,8 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
 #DB_URI = 'sqlite:///./main.db'
-# DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
-DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
+DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
+# DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
 Base = declarative_base()
 
