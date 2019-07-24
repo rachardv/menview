@@ -5,9 +5,9 @@
 <section id="overlay" *ngIf="overlay" class="content-card rounded shadow" [@fadeInOut]>
     <div class="overlay-nav">
         <ul>
-            <li class="overlay-nav-element"><a href="#" (click)="toggleOverview()">Back to Restaurants</a></li>
-            <li *ngIf="showDishes"><a>{{currentRestaurantName}}</a></li>
-            <li class="overlay-nav-element" *ngIf="showReviews"><a href="#"
+            <li class="overlay-nav-element"><a href="#" class="underline" (click)="toggleOverview()">Back to Restaurants</a></li>
+            <li *ngIf="showDishes"><a href="#">{{currentRestaurantName}}</a></li>
+            <li class="overlay-nav-element" *ngIf="showReviews"><a href="#" class="underline"
                     (click)="toggleReviewList()">{{currentRestaurantName}}</a></li>
             <li *ngIf="showReviews"><a>{{currentDishName}}</a></li>
         </ul>

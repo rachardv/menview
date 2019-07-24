@@ -5,6 +5,13 @@
     box-sizing: border-box;
 }
 
+/* BOOTSTRAP OVERRIDES - DO NOT CHANGE THESE */
+
+app-root {
+    padding-top: 0rem;
+}
+
+
 /* HTML ELEMENTS */
 
 html, body {
@@ -170,7 +177,7 @@ nav, footer {
 
 .pseudo-main {
     /* adjust top margin for content box offset from top (to account for navbar) */
-    margin: 5.5rem 0rem 0rem 0rem;
+    margin: 1.5rem 0rem 0rem 0rem;
     padding: 0rem 1rem 2rem 1rem;
     background: transparent;
 }
@@ -299,7 +306,7 @@ nav, footer {
     z-index: 1;
 }
 
-.card {
+.custom-card {
     border: 1px solid rgba(200, 200, 200, 0.8);
     width: 100%;
     padding: 0.5rem 1rem;
