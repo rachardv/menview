@@ -15,7 +15,7 @@ class Review(Base):
     
     review_id = Column(Integer, primary_key=True)
     rating = Column(Integer)
-    username = Column(String(20), ForeignKey("users.username"), nullable=False) #this line spits an error, but I don't know why- James
+    username = Column(String(20), ForeignKey("users.username"), nullable=False)
     dish_id = Column(Integer, ForeignKey("dishes.dish_id"), nullable=False)
     review = Column(String(200))
                 
@@ -33,7 +33,7 @@ class User(Base):
     __tablename__= 'users'
     
     username = Column(String(20), primary_key=True)
-    email = Column(String(50), primary_key=True)
+    email = Column(String(50), nullable=False, unique=True)
     password = Column(String(256), nullable=False)
 #    file = Column(String(60))
 
