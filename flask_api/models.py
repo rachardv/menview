@@ -25,7 +25,7 @@ class Restaurant(Base):
     name = Column(String(30), primary_key=True)
     lat = Column(String(30)) # parse into float in CLIENT-SIDE
     lon = Column(String(30)) # parse into float in CLIENT-SIDE
-    address = Column(String(100))
+    address = Column(String(250))
     description = Column(String(200))
     rating = Column(Integer)
 
