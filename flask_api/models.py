@@ -15,17 +15,17 @@ class Review(Base):
     
     review_id = Column(Integer, primary_key=True)
     rating = Column(Integer)
-    username = Column(String(20), ForeignKey("users.username"), nullable=False)
+    username = Column(String(20), ForeignKey("users.username"), nullable=False) #this line spits an error, but I don't know why- James
     dish_id = Column(Integer, ForeignKey("dishes.dish_id"), nullable=False)
     review = Column(String(200))
                 
 class Restaurant(Base):
     __tablename__ = 'restaurants'
 
-    name = Column(String(30), primary_key=True)
+    name = Column(String(60), primary_key=True)
     lat = Column(String(30)) # parse into float in CLIENT-SIDE
     lon = Column(String(30)) # parse into float in CLIENT-SIDE
-    address = Column(String(250))
+    address = Column(String(100))
     description = Column(String(200))
     rating = Column(Integer)
 
@@ -43,7 +43,7 @@ class Dish(Base):
     dish_id = Column(Integer, primary_key=True)
     dish_rating = Column(Integer)
     dish_name = Column(String(60), nullable=False)
-    dish_description = Column(String(200))
+    dish_description = Column(String(400))
     restaurant_name = Column(String(30), ForeignKey("restaurants.name"), nullable=False)
     
 
@@ -51,4 +51,3 @@ if __name__ == "__main__":
 
     engine = create_engine(DB_URI)
     Base.metadata.create_all(engine)
-    
