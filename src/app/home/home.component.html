@@ -20,10 +20,10 @@
             <div class="row">
                 <div *ngIf="menuActive">
                     <ul style="padding: 0em; list-style-type: none;">
-                        <li *ngFor="let menuItem of menuItems">
+                        <li *ngFor="let dish of dishList">
                             <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
-                                [name]="menuItem.name" [description]="menuItem.description" [cost]="menuItem.cost"
-                                [rating]="menuItem.rating" [isrc]="menuItem.isrc"></dish>
+                                [name]="dish.dish_name" [description]="dish.dish_description"
+                                [rating]="dish.dish_rating"></dish>
                         </li>
                     </ul>
                 </div>
@@ -75,7 +75,7 @@
                     *ngFor="let restaurant of restaurantList | restaurantFilter: searchKeyword">
                     <restaurant [name]="restaurant.name" [location]="restaurant.location"
                         [dishcount]="restaurant.dishcount" (click)="toggleOverview()"
-                        (messageEvent)="loadMenuForRestaurant($event)">
+                        (messageEvent)="getDishes($event)">
                     </restaurant>
                 </li>
             </ul>

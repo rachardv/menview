@@ -32,7 +32,22 @@ export class RestaurantService {
 
   getRestaurant(query: string): Observable<any> {
     console.log("restaurant.service.ts running getRestaurant()");
+    query = encodeURIComponent(query);
+    console.log("Encoded getRestaurant query:" + query);
     return this.http.get(endpoint + 'restaurants/' + query).pipe(map(this.extractData));
+  }
+
+  getDishes(query: string): Observable<any> {
+    
+    console.log("restaurant.service.ts running getMenu()");
+    query = encodeURIComponent(query);
+    console.log("Encoded query:" + query);
+
+    // IF USER IS NOT LOGGED IN
+    return this.http.get(endpoint + 'dishes/?restaurant_name=' + query).pipe(map(this.extractData));
+    
+    // TODO: HANDLE USER LOGGED IN, NEED TO PASS USERNAME AS PARAM TOO
+
   }
 
 }

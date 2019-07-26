@@ -27,12 +27,12 @@ import { reviews } from './sampleReviews';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers:
-  [
-    RestaurantService,
-    DishComponent,
-    RestaurantComponent,
-    ReviewComponent
-  ]
+    [
+      RestaurantService,
+      DishComponent,
+      RestaurantComponent,
+      ReviewComponent
+    ]
 })
 export class HomeComponent implements OnInit {
 
@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
   selectedRestaurant: any;
 
   restaurantList: any = [];
+  dishList: any = [];
   reviewList: any = [];
 
 
@@ -116,20 +117,20 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.markers = [];
 
-    /*
+
     this.api.getAllRestaurants().subscribe((data: {}) => {
-      console.log(data);
+      //console.log(data);
 
       var count = Object.keys(data).length;
       for (var i = 0; i < count; i++) {
-        console.log(data[i]["lat"]);
-        console.log(data[i]["lon"]);
         data[i]["lat"] = parseFloat(data[i]["lat"]);
         data[i]["lon"] = parseFloat(data[i]["lon"]);
       }
-      console.log(count);
+      console.log(count + " restaurants retrieved.");
 
-      this.response = JSON.stringify(data);
+      // this.response = JSON.stringify(data);
+
+      this.restaurantList = data;
 
       this.markers = data;
       this.loading = false;
@@ -139,12 +140,12 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     );
-    */
+
 
     /* TEMPORARY SAMPLE DATA */
-    this.loading = false;
-    this.restaurantList = restaurants;
-    
+    // this.loading = false;
+    // this.restaurantList = restaurants;
+
   }
 
   getRestaurant(query: string) {
@@ -176,14 +177,33 @@ export class HomeComponent implements OnInit {
     this.reviewList = reviews;
   }
 
-  loadMenuForRestaurant($event:any) {
-    this.message = $event;
-    this.updateMenu($event);
+  getDishes($event: any) {
+    console.log("Loading restaurant " + $event);
+    this.loading = true;
+    this.currentRestaurantName = $event;
 
     if (!this.menuActive) {
       this.toggleMenuActive();
     }
-    //console.log(this.message);
+    /*    this.dishList = this.response;*/
+
+
+    this.api.getDishes($event).subscribe((data: {}) => {
+      //console.log(data);
+
+      var count = Object.keys(data).length;
+
+      console.log(count + " dishes retrieved.");
+
+      this.dishList = data;
+
+      this.loading = false;
+    },
+      (error: any) => {
+        console.log("Error retrieving dishes for " + $event + "!");
+        this.loading = false;
+      }
+    );
   }
 
   getMarker(marker: any) {
@@ -197,22 +217,16 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  updateMenu(test: string) {
-    this.currentRestaurantName = this.message;
-    this.menuItems = menus[this.message]['menu'];
-    //console.log(this.menuItems);
-  }
-
   toggleMenuActive() {
     this.menuActive = !this.menuActive;
   }
 
-  readReview($event:any) {
+  readReview($event: any) {
     console.log("Read review called");
     console.log($event);
 
     this.currentDishName = $event;
-    
+
     /* TODO: FETCH REVIEW FOR THIS DISH */
     this.getReviews($event); //placeholder
 
@@ -220,7 +234,7 @@ export class HomeComponent implements OnInit {
     this.toggleReviewList();
   }
 
-  writeReview($event:any) {
+  writeReview($event: any) {
     console.log("Write review called");
     console.log($event);
 
@@ -236,7 +250,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRestaurants(); // load restaurant data on navigate
-    
+
     // // DELETE, DEBUG
     // this.toggleOverview(); 
     // this.message = "Starbucks";
