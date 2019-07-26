@@ -25,6 +25,7 @@
                                 [name]="dish.dish_name" [description]="dish.dish_description"
                                 [rating]="dish.dish_rating"></dish>
                         </li>
+                        <li *ngIf="dishCount == 0"><p>Sorry, we couldn't find any dishes for {{currentRestaurantName}}!</p></li>
                     </ul>
                 </div>
             </div>
@@ -103,9 +104,5 @@
         <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
     </div>
 
-    <!-- debug -->
-    <!-- <div>
-        <p>Testing response:</p>
-        {{response}}
-    </div> -->
+
 </section>
