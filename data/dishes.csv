@@ -1,121 +1,121 @@
-1,chicken nuggets,"deep fried bread chicken served with a variety of sweet sauces like sweet and sour, barbeque, honey mustard",3,McDonald's
-2,quarter pounder,thick beef burger pattie and processed cheese on a bun,4,McDonald's
-3,big mac,regular beef burger pattie and processed cheese on a bun,5,McDonald's
-4,fries,"salty, greasy, deep fried potato thins",2,McDonald's
-5,junior chicken,crispy breaded chicken pattie on a bun with secret sauce,3,McDonald's
-6,double cheeseburger,two regular beef burger pattie and processed cheese on a bun,4,McDonald's
-7,cheeseburger,regular beef burger pattie and processed cheese on a bun,3,McDonald's
-8,crispy chicken wrap,crispy breaded chicken strips served with lettuce and tomato and Cajun spices,4,McDonald's
-9,mcflurry,sweet soft serve vanilla ice cream with crushed candy blended ,3,McDonald's
-10,Angus burger,"Thick Angus beef burger patties, bacon, lettuce, tomato on a sesame seed by.",4,McDonald's
-11,egg and sausage McMuffin,eggs and sausage and processed cheese served on a savoury English muffin,5,McDonald's
-12,egg and bacon McMuffin,eggs and bacon and processed cheese served on a savoury English muffin,4,McDonald's
-13,egg and sausage mcgriddle,eggs and sausage and processed cheese served between sweet syrup injected pancakes,3,McDonald's
-14,egg and bacon mcgriddle,eggs and bacon and processed cheese served on sweet syrup injected pancakes,2,McDonald's
-15,apple pie,"small single serving premade apple pie, sweet and cinnomony",1,McDonald's
-16,tomato and mozzarella crispy chicken burger,"crispy breaded, fried chicken with a slice of mozzarella with lettuce and tomato",1,McDonald's
-17,double quarter pounder blt,"two large beef burger patties, bacon, lettuce, tomato",4,McDonald's
-18,sweet and sour pork,"Breaded, deep-fried pork served with sweet and sour sauce . Served on a bed of rice",5,Bamboo Garden Restaurant
-19,sweet and sour chicken,"Breaded, deep-fried chicken served with sweet and sour sauce. Served on a bed of rice",4,Bamboo Garden Restaurant
-20,breaded almond chicken,"Chicken breast stir-fried with seasonal vegetables, almonds, and a savoury sauce. Served on a bed of rice",5,Bamboo Garden Restaurant
-21,lemon chicken,"Breaded, deep-fried chicken covered in a lemon flavoured sauce. Served on a bed of rice",3,Bamboo Garden Restaurant
-22,sesame chicken,"Breaded, deep-fried chicken, covered in a honey sesame sauce. Served on a bed of rice.",5,Bamboo Garden Restaurant
-23,general Tso's chicken,"Breaded, deep-fried chicken, covered in a spicy sesame sauce. Served on a bed of rice.",3,Bamboo Garden Restaurant
-24,cashew prawn,"Prawns, stir-fried with a sweet and salty cashew sauce. Served with seasonal vegetables",3,Bamboo Garden Restaurant
-25,crispy ginger beef,"Crispy, crunchy, deep-fried beef served with a sweet and spicy ginger sauce on a bed of rice.",3,Bamboo Garden Restaurant
-26,chicken chow mein,Chicken and vegetables stir-fried with noodles,3,Bamboo Garden Restaurant
-27,pork sliced noodle,"BBQ pork stir-fried in ginger and hoisin, with noodles and cabbage",4,Bamboo Garden Restaurant
-28,beef sliced noodle,"BBQ beef stir-fried in ginger and hoisin, with noodles and cabbage",5,Bamboo Garden Restaurant
-29,hot and sour soup, Hot and spicy red peppers and sour vinegar make this pork soup extremely flavourful,4,Bamboo Garden Restaurant
-30,wonton soup,Pork wontons simmer in chicken broth with Chinese vegetables in this hearty and warming soup. Salty and warm. Good for dumping lovers,3,Bamboo Garden Restaurant
-31,chicken chop suey,"Chicken and eggs, stir-fried with vegetables in a savoury sauce",3,Bamboo Garden Restaurant
-32,beef chop suey,"Beef and eggs, stir-fried with vegetables in a savoury sauce",4,Bamboo Garden Restaurant
-33,BBQ duck (half),"Half a Chinese BBQ style duck, roasted with ginger and a sweet glaze",5,Bamboo Garden Restaurant
-34,salty Taiwanese chicken nuggets,Deep-fried salty chicken nuggets served with a sweet dipping sauce,3,Bubble World
-35,laksa ,"Thick wheat noodles or rice vermicelli with prawn and fish, served in spicy soup based on rich, spicy curry coconut milk",2,Bubble World
-36,chicken noodle soup,"Chicken served in a light, salty chicken broth with vegetables and thick wheat noodles",2,Bubble World
-37,beef noodle soup,"Beef served in a light, salty chicken broth with vegetables and thick wheat noodles",2,Bubble World
-38,bubble waffle,"Sweet, sugary batter cooked fresh in a waffle press",3,Bubble World
-39,BBQ duck,"Sliced BBQ style duck, fried with ginger and a sweet glaze, served on rice",4,Bubble World
-40,Fish soup,"Fish balls served in a light, salty fish broth with vegetables and thick wheat noodles",5,Bubble World
-41,Stir fried beef,Beef stir-fried with savoury soy based sauce served with noodles and vegetables,4,Bubble World
-42,Pork dumplings,"Fried savoury, pork dumplings served with dipping sauce",3,Bubble World
-43,Milk tea,"Sweet, milk based tea over ice",2,Bubble World
-44,Honey tea,"Tea over ice, sweetened with honey",3,Bubble World
-45,Bagel,A variety of toasted bagels served with cream cheese or butter,4,Cafe Artigiano
-46,Ham and swiss sandwich,"Ham, swiss cheese, lettuce and tomato served on white or rye bread",3,Cafe Artigiano
-47,Bagel BLT,"A variety of bagels served with bacon, lettuce, and tomato",2,Cafe Artigiano
-48,Breakfast sandwich,"An english muffin with cheese and tomato, with a fresh egg",3,Cafe Artigiano
-49,Cinnamon bun,"Freshly baked sweet, sticky cinnamon bun",4,Cafe Artigiano
-50,Cheddar scone,Savoury cheese and onion scone. Freshly baked and great with melted butter,5,Cafe Artigiano
-51,Cafe latte,A shot of espresso with steamed milk,3,Cafe Artigiano
-52,Iced tea,Black tea over ice,4,Cafe Artigiano
-53,Coffee,Our original blend of coffee,3,Cafe Artigiano
-54,Chocolate croissant,Fresh butter pastry stuffed with sweet milk chocolate,4,Cafe Artigiano
-55,Cali double,"Two 100% all-beef patties, with melted real American cheese, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",5,Caliburger SFU
-56,Cali chicken sandwich,"Lemon and herb marinated chicken breast, crisp lettuce, ripe tomatoes, our house made avocado mayonnaise, all on a freshly toasted bun",3,Caliburger SFU
-57,Chipotle BBQ chicken sandwich,"Lemon and herb marinated chicken breast, ripe tomatoes, bacon, raw onion, pickles, our house made Chipotle BBQ sauce, all on a freshly toasted bun",2,Caliburger SFU
-58,Cheeseburger,"100% all-beef patty, with melted real American cheese, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",2,Caliburger SFU
-59,Hamburger,"100% all-beef patty, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",1,Caliburger SFU
-60,Double hamburger,"Two 100% all-beef patties, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",2,Caliburger SFU
-61,Fresh cut fries,Our signature seasoned fries with choice of sauce,3,Caliburger SFU
-62,Cali style fries,"Seasoned fries smothered in melted real American cheese, grilled sweet onions and our Signature Sauce",4,Caliburger SFU
-63,Cali shakes,"CaliBurger's refreshing milkshakes are handspun and made with rich creamy ice cream and fresh milk. Available in Chocolate, Strawberry and Vanilla.",4,Caliburger SFU
-68,Cod dinner,"Deep-fried and crispy. Breaded Cod fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips
-69,Halibut dinner,"Deep-fried and crispy. Breaded halibut fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips
-70,Salmon dinner (wild),"Deep-fried and crispy. Breaded salmon fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips
-71,Prawn dinner,"Baked prawns served with lemon, butter, and fries",5,Cockney Kings Fish & Chips
-72,Oyster dinner,"Open shell oysters, with potatoes and spicy tomato chutney",4,Cockney Kings Fish & Chips
-73,Chicken strip dinner,Baked and Breaded Chicken breast with a variety of sweet dipping sauces and fries,3,Cockney Kings Fish & Chips
-74,Meat pie,"Baked beef stew pie with carrots and crumbly, buttery, pastry",4,Cockney Kings Fish & Chips
-75,Cod burger,Deep-fried and breaded cod fish on a burger bun with tartar sauce and lemon,3,Cockney Kings Fish & Chips
-76,Salmon burger,Deep-fried and breaded salmon fish on a burger bun with tartar sauce and lemon,2,Cockney Kings Fish & Chips
-77,Beef Rice,"Rice, egg, vegetable, beef ",1,Gawon Korean Cuisine
-78,Spicy Pork Rice,"Rice, egg, vegetable, spicy pork",4,Gawon Korean Cuisine
-79,Spicy Chicken Rice,"Rice, egg, vegetable, spicy chicken ",3,Gawon Korean Cuisine
-80,Kim-Bap,"Korean sushi with ham, radish, cucumber, egg, fish-cake, and carrot",2,Gawon Korean Cuisine
-81,Vege Beef Rice,"Rice, more vegetable, more beef",3,Gawon Korean Cuisine
-82,Vege Spicy Pork,"Rice, more vegetable, more spicy pork",3,Gawon Korean Cuisine
-83,Vege Spicy Chicken,"Rice, more vegetable, more spicy chicken",4,Gawon Korean Cuisine
-84,Chicken Mayo,"Rice, sweet and sour soy sauce flavored chicken with mayonnaise",5,Gawon Korean Cuisine
-85,El Jefe,Grass-fed steak grilled over an open flame,3,Guadalupe Handmade Burritos
-86,Free-Runner,Flame-grilled fraser valley chicken,2,Guadalupe Handmade Burritos
-87,Pudgy Pig,Our signature Tex-Mex slow cooked pork,1,Guadalupe Handmade Burritos
-88,Chuckwagon,Our signature Tex-Mex ground beef,4,Guadalupe Handmade Burritos
-89,Tree-Hugger,Vegan friendly featuring our signature guacamole,3,Guadalupe Handmade Burritos
-90,Chimichanga,"Deep fried buritto. Crispy, greasy, and delicious",2,Guadalupe Handmade Burritos
-91,Al pastor taco,Sweet pineapple with slow cooked pork on small tortilla,2,Guadalupe Handmade Burritos
-92,Barbacoa taco,"Slow cooked, BBQ style, stewed beef on small tortilla",2,Guadalupe Handmade Burritos
-93,Carne asada taco,Lean steak on small tortilla,3,Guadalupe Handmade Burritos
-124,Sumo crunch,"Prawn, crab, cucumber, mango, guac, cabbage, tempura flakes with siracha-aioli. Crispy, crunchy",4,japarrito
-125,Fire ninja,"Tuna, crab, tamago, cucumber, guac, pepper, with sweet-chili, Spicey",2,japarrito
-126,Ichiban dance,"Eel, wkame, crab, guac, inari (sweet been curd), cucumber, dried shallots, unagi-aioli",1,japarrito
-127,The Volcano,"Beef, cabbage, inari (sweet bean curd), guac, cheese, cucumber, dried shallots, with teryaki sauce and mayo",5,japarrito
-128,Ocean Mama,"Salmon, crab, cucumber, guac, pepper, tamago (egg), tobiko, with wasabe and mayo. Mustardy and spicy",5,japarrito
-129,Geisha's Kiss,"Chicken, mango, cabbage, tamago (egg), guac, cucumber, crispy tempura flakes and spicy sauce",5,japarrito
-130,SFU,"Scallop, crab, sakame, cucumber, guac, inari (sweet bean curd), tobiko, with yuzu-dressing",2,japarrito
-131,House Special,"Crab, salmon, tuna, guac, cucumber, tamago, tobiko house sauce, savoury",3,japarrito
-132,The Greek,"Pesto sauce, mozzarella, spinach, Artichoke hearts, red peppers, kalamata olives, sun-dried tomatoes, feta cheese",3,Megabite Pizza
-133,Poutine,Fries topped with gravy (beef and chicken base) and cheese curds,4,Megabite Pizza
-134,Supreme,"Tomato sauce, mozzarella, capicola, italian fennel sausage, mushroom, red onions, kalamata olives",5,Megabite Pizza
-135,Philly Steak,"Alfredo sauce, mozzarella, mushroom, red onion, steak, green pepper, italian cheese blend",3,Megabite Pizza
-136,Meat Lovers,"Tomato sauce, mozzarella, ham, pepperoni, italian sausage, bacon, cheddar",2,Megabite Pizza
-137,The Tuscan ,"Tomato sauce, mozzarella, spinach, sun-dried tomatoes, feta cheese, roasted red peppers, pesto drizzle",1,Megabite Pizza
-138,Caprese,"Pesto sauce, mozzarella, red onions, capers, tomatoes, balsamic reduction",5,Megabite Pizza
-139,Italian Six Cheese,"Italian cheese fiesta! Mozzarella, asiago, romano, parmesan, feta, cheddar",3,Megabite Pizza
-140,Taiwanese Chicken Nugget Rice,Boneless deep fried free range chicken nugget. Flash fried to retain full juicy flavours and textures. Specially marinated with Taiwanese ingredients and spices. ,4,Noodle Waffle Cafe
-141,Curry Angus Beef Rice,"Macau (Portuguese colonial styled curry) with steaming and chewy flavored rice. Angus beef strips with perfect balance of fat and meat. Never too dry nor too rare, beef done just right. Serve with steamed sweet local grown corn kernels.",4,Noodle Waffle Cafe
-142,Authentic Taiwanese Bubble Milked Tea,"Each blend features their unique texture and aroma. We source and mix our own blend. Choose from authentic tropica balls or various add-ons such as grass jelly, red beans and Vietnamese jelly.",2,Noodle Waffle Cafe
-143,Hainanese Chicken Rice,Boneless free range chicken. Fresh from farm to plate. Juicy and full of flavors. Marinated with special sauce and steamed to perfection. Comes complete with steaming sauced rice. Comes with special ginger sauce and soy sauce.,1,Noodle Waffle Cafe
-144,Beef Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Angus beef with marinated fresh local made beefballs",5,Noodle Waffle Cafe
-145,Pork Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Vietnamese authentic ham with premium luncheon meat",3,Noodle Waffle Cafe
-146,Veggie Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Farm fresh Japanese Enoki mushroom, juicy tomato slices and fresh corn kernels",2,Noodle Waffle Cafe
-147,Fish Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Fried shrimp and fish-balls, authentic South China styled marinated fish puff",4,Noodle Waffle Cafe
-148,Fettuccini Pesto Primavera,Seasonal vegetables in roasted garlic basil pesto. Served with a side of garlic focaccia,3,Pasta Polo Express
-149,Baked Fillet of Chicken Parmesan,Served with side linguini alfredo or rosemary potatoes and a side of garlic focaccia,2,Pasta Polo Express
-150,Polo Burger,"Topped with iceberg lettuce, tomato, sweet onion and house sauce. Choice of side Caesar, garden salad, rosemary potatoes or soup",5,Pasta Polo Express
-151,Pesto Polo,"Basil aioli, smoked chicken breast, fresh tomatoes, red onion & crispy pancetta. Choice of side Caesar, garden salad, rosemary potatoes or soup",2,Pasta Polo Express
-152,Roasted Vegetable,"Eggplant,​ zucchini, pepper, onion, topped with spinach & mozza. Choice of side Caesar, garden salad, rosemary potatoes or soup",4,Pasta Polo Express
-153,Carbonara,"italian ham, smoked bacon & sweet onion in white wine cream",1,Pasta Polo Express
-154,Old Syle Chicken Penne,"chicken, creamy sundried tomato Alfredo, mushrooms, baked with cheese",1,Pasta Polo Express
-155,Brick Oven Bruschetta,"tomato, onion, garlic, basil, mozzarella",3,Pasta Polo Express
+1,chicken nuggets,"deep fried bread chicken served with a variety of sweet sauces like sweet and sour, barbeque, honey mustard",3,McDonald's,2.99
+2,quarter pounder,thick beef burger pattie and processed cheese on a bun,4,McDonald's,2.99
+3,big mac,regular beef burger pattie and processed cheese on a bun,5,McDonald's,4.99
+4,fries,"salty, greasy, deep fried potato thins, fries",2,McDonald's,1.99
+5,junior chicken,crispy breaded chicken pattie on a bun with secret sauce,3,McDonald's,2.99
+6,double cheeseburger,two regular beef burger pattie and processed cheese on a bun,4,McDonald's,3.99
+7,cheeseburger,regular beef burger pattie and processed cheese on a bun,3,McDonald's,2.99
+8,crispy chicken wrap,crispy breaded chicken strips served with lettuce and tomato and Cajun spices,4,McDonald's,3.99
+9,mcflurry,sweet soft serve vanilla ice cream with crushed candy blended ,3,McDonald's,3.99
+10,Angus burger,"Thick Angus beef burger patties, bacon, lettuce, tomato on a sesame seed by.",4,McDonald's,6.99
+11,egg and sausage McMuffin,eggs and sausage and processed cheese served on a savoury English muffin,5,McDonald's,3.99
+12,egg and bacon McMuffin,eggs and bacon and processed cheese served on a savoury English muffin,4,McDonald's,3.99
+13,egg and sausage mcgriddle,eggs and sausage and processed cheese served between sweet syrup injected pancakes,3,McDonald's,3.99
+14,egg and bacon mcgriddle,eggs and bacon and processed cheese served on sweet syrup injected pancakes,2,McDonald's,3.99
+15,apple pie,"small single serving premade apple pie, sweet and cinnomony",1,McDonald's,1.99
+16,tomato and mozzarella crispy chicken burger,"crispy breaded, fried chicken with a slice of mozzarella with lettuce and tomato",1,McDonald's,5.99
+17,double quarter pounder blt,"two large beef burger patties, bacon, lettuce, tomato",4,McDonald's,5.99
+18,sweet and sour pork,"Breaded, deep-fried pork served with sweet and sour sauce . Served on a bed of rice",5,Bamboo Garden Restaurant,12
+19,sweet and sour chicken,"Breaded, deep-fried chicken served with sweet and sour sauce. Served on a bed of rice",4,Bamboo Garden Restaurant,12
+20,breaded almond chicken,"Chicken breast stir-fried with seasonal vegetables, almonds, and a savoury sauce. Served on a bed of rice",5,Bamboo Garden Restaurant,13
+21,lemon chicken,"Breaded, deep-fried chicken covered in a lemon flavoured sauce. Served on a bed of rice",3,Bamboo Garden Restaurant,12
+22,sesame chicken,"Breaded, deep-fried chicken, covered in a honey sesame sauce. Served on a bed of rice.",5,Bamboo Garden Restaurant,12
+23,general Tso's chicken,"Breaded, deep-fried chicken, covered in a spicy sesame sauce. Served on a bed of rice.",3,Bamboo Garden Restaurant,13
+24,cashew prawn,"Prawns, stir-fried with a sweet and salty cashew sauce. Served with seasonal vegetables",3,Bamboo Garden Restaurant,14
+25,crispy ginger beef,"Crispy, crunchy, deep-fried beef served with a sweet and spicy ginger sauce on a bed of rice.",3,Bamboo Garden Restaurant,12
+26,chicken chow mein,Chicken and vegetables stir-fried with noodles,3,Bamboo Garden Restaurant,11
+27,pork sliced noodle,"BBQ pork stir-fried in ginger and hoisin, with noodles and cabbage",4,Bamboo Garden Restaurant,13
+28,beef sliced noodle,"BBQ beef stir-fried in ginger and hoisin, with noodles and cabbage",5,Bamboo Garden Restaurant,13
+29,hot and sour soup, Hot and spicy red peppers and sour vinegar make this pork soup extremely flavourful,4,Bamboo Garden Restaurant,10
+30,wonton soup,Pork wontons simmer in chicken broth with Chinese vegetables in this hearty and warming soup. Salty and warm. Good for dumping lovers,3,Bamboo Garden Restaurant,10
+31,chicken chop suey,"Chicken and eggs, stir-fried with vegetables in a savoury sauce",3,Bamboo Garden Restaurant,11
+32,beef chop suey,"Beef and eggs, stir-fried with vegetables in a savoury sauce",4,Bamboo Garden Restaurant,11
+33,BBQ duck (half),"Half a Chinese BBQ style duck, roasted with ginger and a sweet glaze",5,Bamboo Garden Restaurant,14
+34,salty Taiwanese chicken nuggets,Deep-fried salty chicken nuggets served with a sweet dipping sauce,3,Bubble World,10
+35,laksa ,"Thick wheat noodles or rice vermicelli with prawn and fish, served in spicy soup based on rich, spicy curry coconut milk",2,Bubble World,11
+36,chicken noodle soup,"Chicken served in a light, salty chicken broth with vegetables and thick wheat noodles",2,Bubble World,11
+37,beef noodle soup,"Beef served in a light, salty chicken broth with vegetables and thick wheat noodles",2,Bubble World,11
+38,bubble waffle,"Sweet, sugary batter cooked fresh in a waffle press",3,Bubble World,4
+39,BBQ duck,"Sliced BBQ style duck, fried with ginger and a sweet glaze, served on rice",4,Bubble World,13
+40,Fish soup,"Fish balls served in a light, salty fish broth with vegetables and thick wheat noodles",5,Bubble World,10
+41,Stir fried beef,Beef stir-fried with savoury soy based sauce served with noodles and vegetables,4,Bubble World,11
+42,Pork dumplings,"Fried savoury, pork dumplings served with dipping sauce",3,Bubble World,10
+43,Milk tea,"Sweet, milk based tea over ice",2,Bubble World,4
+44,Honey tea,"Tea over ice, sweetened with honey",3,Bubble World,3
+45,Bagel,A variety of toasted bagels served with cream cheese or butter,4,Cafe Artigiano,3
+46,Ham and swiss sandwich,"Ham, swiss cheese, lettuce and tomato served on white or rye bread",3,Cafe Artigiano,6
+47,Bagel BLT,"A variety of bagels served with bacon, lettuce, and tomato",2,Cafe Artigiano,5
+48,Breakfast sandwich,"An english muffin with cheese and tomato, with a fresh egg",3,Cafe Artigiano,4
+49,Cinnamon bun,"Freshly baked sweet, sticky cinnamon bun",4,Cafe Artigiano,3
+50,Cheddar scone,Savoury cheese and onion scone. Freshly baked and great with melted butter,5,Cafe Artigiano,3
+51,Cafe latte,A shot of espresso with steamed milk,3,Cafe Artigiano,4
+52,Iced tea,Black tea over ice,4,Cafe Artigiano,3
+53,Coffee,Our original blend of coffee,3,Cafe Artigiano,3
+54,Chocolate croissant,Fresh butter pastry stuffed with sweet milk chocolate,4,Cafe Artigiano,3
+55,Cali double,"Two 100% all-beef patties, with melted real American cheese, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",5,Caliburger SFU,10
+56,Cali chicken sandwich,"Lemon and herb marinated chicken breast, crisp lettuce, ripe tomatoes, our house made avocado mayonnaise, all on a freshly toasted bun",3,Caliburger SFU,10
+57,Chipotle BBQ chicken sandwich,"Lemon and herb marinated chicken breast, ripe tomatoes, bacon, raw onion, pickles, our house made Chipotle BBQ sauce, all on a freshly toasted bun",2,Caliburger SFU,11
+58,Cheeseburger,"100% all-beef patty, with melted real American cheese, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",2,Caliburger SFU,13
+59,Hamburger,"100% all-beef patty, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",1,Caliburger SFU,10
+60,Double hamburger,"Two 100% all-beef patties, garden-fresh plump red tomatoes and cool-crisp iceberg lettuce",2,Caliburger SFU,13
+61,Fresh cut fries,Our signature seasoned fries with choice of sauce,3,Caliburger SFU,5
+62,Cali style fries,"Seasoned fries smothered in melted real American cheese, grilled sweet onions and our Signature Sauce",4,Caliburger SFU,8
+63,Cali shakes,"CaliBurger's refreshing milkshakes are handspun and made with rich creamy ice cream and fresh milk. Available in Chocolate, Strawberry and Vanilla.",4,Caliburger SFU,5
+68,Cod dinner,"Deep-fried and crispy. Breaded Cod fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips,12
+69,Halibut dinner,"Deep-fried and crispy. Breaded halibut fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips,12
+70,Salmon dinner (wild),"Deep-fried and crispy. Breaded salmon fish, with fries, and tartar sauce ",5,Cockney Kings Fish & Chips,12
+71,Prawn dinner,"Baked prawns served with lemon, butter, and fries",5,Cockney Kings Fish & Chips,14
+72,Oyster dinner,"Open shell oysters, with potatoes and spicy tomato chutney",4,Cockney Kings Fish & Chips,16
+73,Chicken strip dinner,Baked and Breaded Chicken breast with a variety of sweet dipping sauces and fries,3,Cockney Kings Fish & Chips,11
+74,Meat pie,"Baked beef stew pie with carrots and crumbly, buttery, pastry",4,Cockney Kings Fish & Chips,10
+75,Cod burger,Deep-fried and breaded cod fish on a burger bun with tartar sauce and lemon,3,Cockney Kings Fish & Chips,11
+76,Salmon burger,Deep-fried and breaded salmon fish on a burger bun with tartar sauce and lemon,2,Cockney Kings Fish & Chips,11
+77,Beef Rice,"Rice, egg, vegetable, beef ",1,Gawon Korean Cuisine,12
+78,Spicy Pork Rice,"Rice, egg, vegetable, spicy pork",4,Gawon Korean Cuisine,12
+79,Spicy Chicken Rice,"Rice, egg, vegetable, spicy chicken ",3,Gawon Korean Cuisine,12
+80,Kim-Bap,"Korean sushi with ham, radish, cucumber, egg, fish-cake, and carrot",2,Gawon Korean Cuisine,10
+81,Vege Beef Rice,"Rice, more vegetable, more beef",3,Gawon Korean Cuisine,11
+82,Vege Spicy Pork,"Rice, more vegetable, more spicy pork",3,Gawon Korean Cuisine,11
+83,Vege Spicy Chicken,"Rice, more vegetable, more spicy chicken",4,Gawon Korean Cuisine,11
+84,Chicken Mayo,"Rice, sweet and sour soy sauce flavored chicken with mayonnaise",5,Gawon Korean Cuisine,10
+85,El Jefe,Grass-fed steak grilled over an open flame,3,Guadalupe Handmade Burritos,8
+86,Free-Runner,Flame-grilled fraser valley chicken,2,Guadalupe Handmade Burritos,8
+87,Pudgy Pig,Our signature Tex-Mex slow cooked pork,1,Guadalupe Handmade Burritos,8
+88,Chuckwagon,Our signature Tex-Mex ground beef,4,Guadalupe Handmade Burritos,9
+89,Tree-Hugger,Vegan friendly featuring our signature guacamole,3,Guadalupe Handmade Burritos,9
+90,Chimichanga,"Deep fried buritto. Crispy, greasy, and delicious",2,Guadalupe Handmade Burritos,11
+91,Al pastor taco,Sweet pineapple with slow cooked pork on small tortilla,2,Guadalupe Handmade Burritos,4
+92,Barbacoa taco,"Slow cooked, BBQ style, stewed beef on small tortilla",2,Guadalupe Handmade Burritos,4
+93,Carne asada taco,Lean steak on small tortilla,3,Guadalupe Handmade Burritos,4
+124,Sumo crunch,"Prawn, crab, cucumber, mango, guac, cabbage, tempura flakes with siracha-aioli. Crispy, crunchy",4,japarrito,13
+125,Fire ninja,"Tuna, crab, tamago, cucumber, guac, pepper, with sweet-chili, Spicey",2,japarrito,13
+126,Ichiban dance,"Eel, wkame, crab, guac, inari (sweet been curd), cucumber, dried shallots, unagi-aioli",1,japarrito,15
+127,The Volcano,"Beef, cabbage, inari (sweet bean curd), guac, cheese, cucumber, dried shallots, with teryaki sauce and mayo",5,japarrito,15
+128,Ocean Mama,"Salmon, crab, cucumber, guac, pepper, tamago (egg), tobiko, with wasabe and mayo. Mustardy and spicy",5,japarrito,14
+129,Geisha's Kiss,"Chicken, mango, cabbage, tamago (egg), guac, cucumber, crispy tempura flakes and spicy sauce",5,japarrito,14
+130,SFU,"Scallop, crab, sakame, cucumber, guac, inari (sweet bean curd), tobiko, with yuzu-dressing",2,japarrito,13
+131,House Special,"Crab, salmon, tuna, guac, cucumber, tamago, tobiko house sauce, savoury",3,japarrito,13
+132,The Greek,"Pesto sauce, mozzarella, spinach, Artichoke hearts, red peppers, kalamata olives, sun-dried tomatoes, feta cheese",3,Megabite Pizza,2.99
+133,Poutine,Fries topped with gravy (beef and chicken base) and cheese curds,4,Megabite Pizza,2.99
+134,Supreme,"Tomato sauce, mozzarella, capicola, italian fennel sausage, mushroom, red onions, kalamata olives",5,Megabite Pizza,2.99
+135,Philly Steak,"Alfredo sauce, mozzarella, mushroom, red onion, steak, green pepper, italian cheese blend",3,Megabite Pizza,2.99
+136,Meat Lovers,"Tomato sauce, mozzarella, ham, pepperoni, italian sausage, bacon, cheddar",2,Megabite Pizza,2.99
+137,The Tuscan ,"Tomato sauce, mozzarella, spinach, sun-dried tomatoes, feta cheese, roasted red peppers, pesto drizzle",1,Megabite Pizza,2.99
+138,Caprese,"Pesto sauce, mozzarella, red onions, capers, tomatoes, balsamic reduction",5,Megabite Pizza,2.99
+139,Italian Six Cheese,"Italian cheese fiesta! Mozzarella, asiago, romano, parmesan, feta, cheddar",3,Megabite Pizza,2.99
+140,Taiwanese Chicken Nugget Rice,Boneless deep fried free range chicken nugget. Flash fried to retain full juicy flavours and textures. Specially marinated with Taiwanese ingredients and spices. ,4,Noodle Waffle Cafe,11
+141,Curry Angus Beef Rice,"Macau (Portuguese colonial styled curry) with steaming and chewy flavored rice. Angus beef strips with perfect balance of fat and meat. Never too dry nor too rare, beef done just right. Serve with steamed sweet local grown corn kernels.",4,Noodle Waffle Cafe,12
+142,Authentic Taiwanese Bubble Milked Tea,"Each blend features their unique texture and aroma. We source and mix our own blend. Choose from authentic tropica balls or various add-ons such as grass jelly, red beans and Vietnamese jelly.",2,Noodle Waffle Cafe,5
+143,Hainanese Chicken Rice,Boneless free range chicken. Fresh from farm to plate. Juicy and full of flavors. Marinated with special sauce and steamed to perfection. Comes complete with steaming sauced rice. Comes with special ginger sauce and soy sauce.,1,Noodle Waffle Cafe,11
+144,Beef Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Angus beef with marinated fresh local made beefballs",5,Noodle Waffle Cafe,10
+145,Pork Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Vietnamese authentic ham with premium luncheon meat",3,Noodle Waffle Cafe,10
+146,Veggie Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Farm fresh Japanese Enoki mushroom, juicy tomato slices and fresh corn kernels",2,Noodle Waffle Cafe,9
+147,Fish Noodle Soup,"Hot steaming soup and choice of chewy and tasty noodles made fresh from scratch, never frozen. With Fried shrimp and fish-balls, authentic South China styled marinated fish puff",4,Noodle Waffle Cafe,10
+148,Fettuccini Pesto Primavera,Seasonal vegetables in roasted garlic basil pesto. Served with a side of garlic focaccia,3,Pasta Polo Express,12
+149,Baked Fillet of Chicken Parmesan,Served with side linguini alfredo or rosemary potatoes and a side of garlic focaccia,2,Pasta Polo Express,12
+150,Polo Burger,"Topped with iceberg lettuce, tomato, sweet onion and house sauce. Choice of side Caesar, garden salad, rosemary potatoes or soup",5,Pasta Polo Express,12
+151,Pesto Polo,"Basil aioli, smoked chicken breast, fresh tomatoes, red onion & crispy pancetta. Choice of side Caesar, garden salad, rosemary potatoes or soup",2,Pasta Polo Express,14
+152,Roasted Vegetable,"Eggplant,​ zucchini, pepper, onion, topped with spinach & mozza. Choice of side Caesar, garden salad, rosemary potatoes or soup",4,Pasta Polo Express,14
+153,Carbonara,"italian ham, smoked bacon & sweet onion in white wine cream",1,Pasta Polo Express,12
+154,Old Syle Chicken Penne,"chicken, creamy sundried tomato Alfredo, mushrooms, baked with cheese",1,Pasta Polo Express,12
+155,Brick Oven Bruschetta,"tomato, onion, garlic, basil, mozzarella",3,Pasta Polo Express,8

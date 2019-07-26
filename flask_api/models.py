@@ -45,6 +45,7 @@ class Dish(Base):
     dish_name = Column(String(60), nullable=False)
     dish_description = Column(String(400))
     restaurant_name = Column(String(30), ForeignKey("restaurants.name"), nullable=False)
+    dish_price = Column(String(10))
     
 
 if __name__ == "__main__":
