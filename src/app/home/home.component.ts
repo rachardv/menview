@@ -36,33 +36,38 @@ import { reviews } from './sampleReviews';
 })
 export class HomeComponent implements OnInit {
 
-  menuActive: boolean;
-  message: string;
-  menuItems: any;
-  markers: any;
+  /* controls whether loading "spinner" is shown */
   loading: boolean = false;
+  
+  /* string used in angular pipe to filter restaurant list */
   searchKeyword: string = "";
-
+  
   /* maps vars */
   latitude = 49.279030;
   longitude = -122.912738;
   mapType = 'roadmap';
-  overview: boolean = true;
-  overlay: boolean = false;
-
-  showDishes: boolean = true;
-  showReviews: boolean = false;
-
-
+  markers: any = []; // stores map markers
+  
+  /* booleans for handle overlay & overview display */
+  overview: boolean = true; // overview = first screen with google maps & restaurant search bar
+  overlay: boolean = false; // overlay = view dishes and/or reviews for specific dishes
+  show: string; // determines what the overlay screen is showing. can be set to 3 values: "dishes", "restaurants", "reviews".
+  menuActive: boolean = false; // TODO: refactor this. do we need this?
+  
+  
+  /* data-bound strings to display to user */
   currentRestaurantName: string;
   currentDishName: string;
   selectedRestaurant: any;
-
+  
+  /* arrays for storing data returned from API calls */
   restaurantList: any = [];
   dishList: any = [];
   reviewList: any = [];
 
-
+  dishCount: number = 0; // count number of dishes returned from API call. Also used to detect empty restaurants to display a message to the user
+  restaurantCount: number = 0;
+  
   response: any = {
     "name": "",
     "lat": "",
@@ -73,7 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(public api: RestaurantService) {
-    this.menuActive = false;
+
   }
 
   toggleOverview() {
@@ -95,23 +100,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  toggleReviewList() {
-    if (this.showDishes) {
-      // ENABLE reviews
-      this.showDishes = !this.showDishes;
-
-      setTimeout(() => {
-        this.showReviews = !this.showReviews;
-      }, 250);
-    } else {
-      this.showReviews = !this.showReviews;
-
-      setTimeout(() => {
-        this.showDishes = !this.showDishes;
-      }, 250);
-    }
+  setShow(query: string) {
+    this.show = query;
   }
-
 
   getAllRestaurants() {
     this.loading = true;
@@ -119,16 +110,16 @@ export class HomeComponent implements OnInit {
 
 
     this.api.getAllRestaurants().subscribe((data: {}) => {
-      //console.log(data);
+      
+      this.restaurantCount = Object.keys(data).length;
 
-      var count = Object.keys(data).length;
-      for (var i = 0; i < count; i++) {
+      /* parse all strings into floats from restaurants. god help you if your restaurants list is long */
+      for (var i = 0; i < this.restaurantCount; i++) {
         data[i]["lat"] = parseFloat(data[i]["lat"]);
         data[i]["lon"] = parseFloat(data[i]["lon"]);
       }
-      console.log(count + " restaurants retrieved.");
 
-      // this.response = JSON.stringify(data);
+      // console.log(count + " restaurants retrieved.");
 
       this.restaurantList = data;
 
@@ -136,15 +127,12 @@ export class HomeComponent implements OnInit {
       this.loading = false;
     },
       (error: any) => {
+        // TODO: display an error to user if restaurants are not retrieved.
+        this.restaurantCount = 0;
         console.log("Error retrieving all restaurants!");
         this.loading = false;
       }
     );
-
-
-    /* TEMPORARY SAMPLE DATA */
-    // this.loading = false;
-    // this.restaurantList = restaurants;
 
   }
 
@@ -158,15 +146,15 @@ export class HomeComponent implements OnInit {
         data["lat"] = parseFloat(data["lat"]);
         data["lon"] = parseFloat(data["lon"]);
 
-        this.response = JSON.stringify(data);
-
-        console.log(data);
+        this.show = "dishes";
         this.loading = false;
       },
       (error: any) => {
         console.log("Error retrieving " + query);
+        this.show = "dishes";
         this.loading = false;
       }
+      
     );
   }
 
@@ -182,6 +170,8 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.currentRestaurantName = $event;
 
+    this.dishCount = 0; // reset count of dishes
+
     if (!this.menuActive) {
       this.toggleMenuActive();
     }
@@ -191,16 +181,18 @@ export class HomeComponent implements OnInit {
     this.api.getDishes($event).subscribe((data: {}) => {
       //console.log(data);
 
-      var count = Object.keys(data).length;
+      this.dishCount = Object.keys(data).length;
 
-      console.log(count + " dishes retrieved.");
+      console.log(this.dishCount + " dishes retrieved.");
 
       this.dishList = data;
-
+      this.setShow("dishes");
       this.loading = false;
     },
       (error: any) => {
         console.log("Error retrieving dishes for " + $event + "!");
+        this.dishCount = 0;
+        this.setShow("dishes");
         this.loading = false;
       }
     );
@@ -231,7 +223,7 @@ export class HomeComponent implements OnInit {
     this.getReviews($event); //placeholder
 
     /* TOGGLE REVIEW LIST VIEW */
-    this.toggleReviewList();
+    this.setShow("reviews");
   }
 
   writeReview($event: any) {
@@ -245,20 +237,11 @@ export class HomeComponent implements OnInit {
 
 
     /* TOGGLE REVIEW LIST VIEW */
-    this.toggleReviewList();
+    this.setShow("reviews");
   }
 
   ngOnInit() {
     this.getAllRestaurants(); // load restaurant data on navigate
-
-    // // DELETE, DEBUG
-    // this.toggleOverview(); 
-    // this.message = "Starbucks";
-    // if (!this.menuActive) {
-    //   this.toggleMenuActive();
-    // }
-    // this.updateMenu(this.message);
-    // // END DELETE
 
   }
 
