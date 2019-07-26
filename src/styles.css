@@ -438,8 +438,8 @@ nav, footer {
 }
 
 .review-header {
-    margin: 0rem -1rem;
-    padding: 0rem 1rem;
+    margin: 0rem 0rem;
+    padding: 0rem 0.5rem;
     border-bottom: 1px solid rgba(200, 200, 200, 0.8);
 }
 
@@ -449,12 +449,17 @@ nav, footer {
     line-height: 1rem;
 }
 
+.review-content {
+    margin: 0rem;
+    padding: 0.5rem;
+}
+
 .review-textbox {
     width: 100%;
     min-height: 7rem;
     height: 7rem;
     resize: vertical;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border: 1px solid rgba(200, 200, 200, 0.8);
 }
 

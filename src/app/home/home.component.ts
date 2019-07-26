@@ -51,8 +51,7 @@ export class HomeComponent implements OnInit {
   /* booleans for handle overlay & overview display */
   overview: boolean = true; // overview = first screen with google maps & restaurant search bar
   overlay: boolean = false; // overlay = view dishes and/or reviews for specific dishes
-  showDishes: boolean = true; // if true, overlay displays list of dishes for restaurants (must always be opposite of showReviews)
-  showReviews: boolean = false; // if true, overlay display list of reviews for a dish (must always be opposite of showDishes)
+  show: string; // determines what the overlay screen is showing. can be set to 3 values: "dishes", "restaurants", "reviews".
   menuActive: boolean = false; // TODO: refactor this. do we need this?
   
   
@@ -67,7 +66,7 @@ export class HomeComponent implements OnInit {
   reviewList: any = [];
 
   dishCount: number = 0; // count number of dishes returned from API call. Also used to detect empty restaurants to display a message to the user
-  
+  restaurantCount: number = 0;
   
   response: any = {
     "name": "",
@@ -101,23 +100,9 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  toggleReviewList() {
-    if (this.showDishes) {
-      // ENABLE reviews
-      this.showDishes = !this.showDishes;
-
-      setTimeout(() => {
-        this.showReviews = !this.showReviews;
-      }, 250);
-    } else {
-      this.showReviews = !this.showReviews;
-
-      setTimeout(() => {
-        this.showDishes = !this.showDishes;
-      }, 250);
-    }
+  setShow(query: string) {
+    this.show = query;
   }
-
 
   getAllRestaurants() {
     this.loading = true;
@@ -125,10 +110,11 @@ export class HomeComponent implements OnInit {
 
 
     this.api.getAllRestaurants().subscribe((data: {}) => {
+      
+      this.restaurantCount = Object.keys(data).length;
 
       /* parse all strings into floats from restaurants. god help you if your restaurants list is long */
-      var count = Object.keys(data).length;
-      for (var i = 0; i < count; i++) {
+      for (var i = 0; i < this.restaurantCount; i++) {
         data[i]["lat"] = parseFloat(data[i]["lat"]);
         data[i]["lon"] = parseFloat(data[i]["lon"]);
       }
@@ -142,6 +128,7 @@ export class HomeComponent implements OnInit {
     },
       (error: any) => {
         // TODO: display an error to user if restaurants are not retrieved.
+        this.restaurantCount = 0;
         console.log("Error retrieving all restaurants!");
         this.loading = false;
       }
@@ -159,12 +146,15 @@ export class HomeComponent implements OnInit {
         data["lat"] = parseFloat(data["lat"]);
         data["lon"] = parseFloat(data["lon"]);
 
+        this.show = "dishes";
         this.loading = false;
       },
       (error: any) => {
         console.log("Error retrieving " + query);
+        this.show = "dishes";
         this.loading = false;
       }
+      
     );
   }
 
@@ -196,12 +186,13 @@ export class HomeComponent implements OnInit {
       console.log(this.dishCount + " dishes retrieved.");
 
       this.dishList = data;
-
+      this.setShow("dishes");
       this.loading = false;
     },
       (error: any) => {
         console.log("Error retrieving dishes for " + $event + "!");
         this.dishCount = 0;
+        this.setShow("dishes");
         this.loading = false;
       }
     );
@@ -232,7 +223,7 @@ export class HomeComponent implements OnInit {
     this.getReviews($event); //placeholder
 
     /* TOGGLE REVIEW LIST VIEW */
-    this.toggleReviewList();
+    this.setShow("reviews");
   }
 
   writeReview($event: any) {
@@ -246,7 +237,7 @@ export class HomeComponent implements OnInit {
 
 
     /* TOGGLE REVIEW LIST VIEW */
-    this.toggleReviewList();
+    this.setShow("reviews");
   }
 
   ngOnInit() {

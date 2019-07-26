@@ -1,37 +1,53 @@
-<div id="loading-spinner" *ngIf="loading" [@fadeInOut] class="loading-spinner"  [@fadeInOut]>
+<div id="loading-spinner" *ngIf="loading" [@fadeInOut] class="loading-spinner" [@fadeInOut]>
     <p style="position: fixed; top: 50%; width: 100%; text-align: center;">Loading...</p>
 </div>
 
 <section id="overlay" *ngIf="overlay" class="content-card rounded shadow" [@fadeInOut]>
     <div class="overlay-nav">
         <ul>
-            <li class="overlay-nav-element"><a href="#" class="underline" (click)="toggleOverview()">Back to Restaurants</a></li>
-            <li *ngIf="showDishes"><a href="#">{{currentRestaurantName}}</a></li>
-            <li class="overlay-nav-element" *ngIf="showReviews"><a href="#" class="underline"
-                    (click)="toggleReviewList()">{{currentRestaurantName}}</a></li>
-            <li *ngIf="showReviews"><a>{{currentDishName}}</a></li>
+            <li class="overlay-nav-element"><a href="#" class="underline" (click)="toggleOverview()">Back to
+                    Restaurants</a></li>
+            <li *ngIf="show == 'dishes'"><a href="#">{{currentRestaurantName}}</a></li>
+            <li class="overlay-nav-element" *ngIf="show == 'reviews'"><a href="#" class="underline"
+                    (click)="setShow('dishes')">{{currentRestaurantName}}</a></li>
+            <li *ngIf="show == 'reviews'"><a>{{currentDishName}}</a></li>
         </ul>
     </div>
 
     <div class="overlay-content">
-
-        <div id="dish-list" *ngIf="showDishes">
-            <h2>{{currentRestaurantName}}</h2>
+        <div id="restaurant-list" *ngIf="show == 'restaurants'">
+            <h2>Viewing list of all restaurants</h2>
             <div class="row">
-                <div *ngIf="menuActive">
-                    <ul style="padding: 0em; list-style-type: none;">
-                        <li *ngFor="let dish of dishList">
-                            <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
-                                [name]="dish.dish_name" [description]="dish.dish_description"
-                                [rating]="dish.dish_rating"></dish>
-                        </li>
-                        <li *ngIf="dishCount == 0"><p>Sorry, we couldn't find any dishes for {{currentRestaurantName}}!</p></li>
-                    </ul>
-                </div>
+                <ul style="padding: 0em; list-style-type: none;">
+                    <li *ngFor="let dish of dishList">
+                        <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
+                            [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
+                        </dish>
+                    </li>
+                    <li *ngIf="restaurantCount == 0">
+                        <p>Sorry, we couldn't find any restaurants in our database!</p>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div id="review-list" *ngIf="showReviews">
+        <div id="dish-list" *ngIf="show == 'dishes'">
+            <h2>{{currentRestaurantName}}</h2>
+            <div class="row">
+                <ul style="padding: 0em; list-style-type: none;">
+                    <li *ngFor="let dish of dishList">
+                        <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
+                            [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
+                        </dish>
+                    </li>
+                    <li *ngIf="dishCount == 0">
+                        <p>Sorry, we couldn't find any dishes for {{currentRestaurantName}}!</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="review-list" *ngIf="show == 'reviews'">
             <h3>Reviews for {{currentDishName}} at {{currentRestaurantName}}</h3>
             <div>
                 <ul style="padding: 0em; list-style-type: none;">
@@ -42,13 +58,12 @@
                     <li>
                         <form style="width: 100%; height: 100%;">
                             <textarea class="review-textbox rounded" placeholder="Write a review"></textarea>
-                            <input type="submit" />
+                            <input class="btn-alt full-width rounded shadow" type="submit" value="Submit" />
                         </form>
                     </li>
                 </ul>
             </div>
         </div>
-
     </div>
 
 </section>
@@ -82,14 +97,14 @@
             </ul>
         </div>
 
-        <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p>
-        <!-- <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
-            style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="15">
+        <!-- <p style="margin-bottom: 1em; color: red;"><i>AGM component commented out for now to reduce API calls</i></p> -->
+        <agm-map class="map-box rounded soft-transition" [ngClass]="{'split-large': searchKeyword !== ''}"
+            style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="12">
             <span>Loading...</span>
             <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
                 [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
             </agm-marker>
-        </agm-map> -->
+        </agm-map>
 
         <div *ngIf="selectedRestaurant" class="rounded">
             <div class="restaurant-view rounded">
@@ -100,8 +115,10 @@
             </div>
         </div>
 
-        <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">Test all retrieval</button>
-        <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button>
+        <!-- use these buttons for debug purposes -->
+        <!-- <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">Test all retrieval</button> -->
+        <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">View list of all restaurants</button>
+        <!-- <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button> -->
     </div>
 
 
