@@ -32,12 +32,13 @@ To stop the container after you're done using it, enter:
 2. `docker-compose stop`
 
 To instantiate the database with data:
+Initializing the database twice may cause problems, use `docker-compose down -v` to remove all volumes before continuing.
 
 1. get the database container up and running via `docker-compose up -d --build`
 
 2. run a seperate bash window in the menview directory 
 
-3. type `docker cp dump.sql menview_db_1:dump.sql` followed by `docker exec -it menview_db_1 psql -U admin -W menviewdb -f dump.sql`
+3. type `bash db_init.sh`
 
 4. type the password "secret" when promted 
 
