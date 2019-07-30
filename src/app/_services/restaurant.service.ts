@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 
@@ -50,4 +50,20 @@ export class RestaurantService {
 
   }
 
-}
+  getReviewsByDish(dish_id:number): Observable<any> {
+    let params = new HttpParams().set("dish_id", dish_id.toString())
+    return this.http.get<any>(endpoint+'reviews/', {params})
+      .pipe(
+        map(
+          data => {
+            return data;
+        })
+      ) 
+
+  }
+
+  createReview(dish_id:number, rating:number, review:string): Observable<any> {
+    return this.http.post<any>(endpoint+`reviews/`, { dish_id, rating, review })
+  }
+
+}  

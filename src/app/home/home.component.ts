@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DishComponent } from './dish.component';
 import { RestaurantComponent } from './restaurant.component';
 import { ReviewComponent } from './review.component'
+import { AuthenticationService, AlertService } from '../_services'
 
 import { RestaurantService } from '../_services';
 
-import { restaurants, menus } from './sampleData';
-import { reviews } from './sampleReviews';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { pipe } from 'rxjs';
 
 
 @Component({
@@ -36,6 +39,16 @@ import { reviews } from './sampleReviews';
 })
 export class HomeComponent implements OnInit {
 
+  constructor(public api: RestaurantService,
+    private formBuilder: FormBuilder,
+    private router: Router, 
+    private authService: AuthenticationService) {
+
+}
+
+
+  reviewForm: FormGroup;
+
   /* controls whether loading "spinner" is shown */
   loading: boolean = false;
   
@@ -57,7 +70,7 @@ export class HomeComponent implements OnInit {
   
   /* data-bound strings to display to user */
   currentRestaurantName: string;
-  currentDishName: string;
+  currentDish: string;
   selectedRestaurant: any;
   
   /* arrays for storing data returned from API calls */
@@ -75,10 +88,6 @@ export class HomeComponent implements OnInit {
     "address": "",
     "description": "",
     "rating": 0
-  }
-
-  constructor(public api: RestaurantService) {
-
   }
 
   toggleOverview() {
@@ -158,13 +167,6 @@ export class HomeComponent implements OnInit {
     );
   }
 
-
-  getReviews(query: string) {
-    /* TODO: API CALL FOR REVIEWS FROM THIS DISH */
-    console.log("Getting reviews for " + query);
-    this.reviewList = reviews;
-  }
-
   getDishes($event: any) {
     console.log("Loading restaurant " + $event);
     this.loading = true;
@@ -213,36 +215,51 @@ export class HomeComponent implements OnInit {
     this.menuActive = !this.menuActive;
   }
 
-  readReview($event: any) {
-    console.log("Read review called");
-    console.log($event);
+//--------------------- Review related functions------------------
+  reloadReviews() {
+    this.api.getReviewsByDish(this.currentDish["dish_id"]).subscribe(
+      data => {
+        this.reviewList = data;});
+  }
 
-    this.currentDishName = $event;
-
-    /* TODO: FETCH REVIEW FOR THIS DISH */
-    this.getReviews($event); //placeholder
-
-    /* TOGGLE REVIEW LIST VIEW */
+  readReview(dish: any) {
+    //set dish name
+    this.currentDish = dish;
+    //get dish by dish ID
+    this.reloadReviews();
+    //set overlay
     this.setShow("reviews");
   }
 
-  writeReview($event: any) {
-    console.log("Write review called");
-    console.log($event);
+  submitReview(dish: any) {
 
-    this.currentDishName = $event;
+    if (this.reviewForm.invalid) {
+      return;
+    }
 
-    /* TODO: WRITE A REVIEW FOR THIS DISH */
-    this.getReviews($event); //placeholder
-
-
-    /* TOGGLE REVIEW LIST VIEW */
-    this.setShow("reviews");
+    let f = this.reviewForm.controls; //for convienance
+    let rating = f.rating.value
+    let review = f.details.value
+    this.api.createReview(this.currentDish["dish_id"], rating, review)
+      .pipe().subscribe(
+        data => {
+          console.log("Review sucessfully made");
+          this.reloadReviews();
+          this.reviewForm.reset();
+        },
+        error => {
+          console.log(error)
+          this.router.navigate(['/login']);
+        }
+      )
   }
 
   ngOnInit() {
     this.getAllRestaurants(); // load restaurant data on navigate
+    this.reviewForm = this.formBuilder.group({
+      rating: ['', Validators.required],
+      details: ['', Validators.required]
+  });
 
   }
-
 }

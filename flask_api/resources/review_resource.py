@@ -1,8 +1,9 @@
-from flask import request
+from flask import request, jsonify
 from models import Review
 from db import session
 from datetime import datetime
 from flask_restful import reqparse, abort, Resource, fields, marshal_with
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 review_fields = {
@@ -59,21 +60,45 @@ class ReviewResource(Resource):
 class ReviewListResource(Resource):
     @marshal_with(review_fields)
     def get(self):
+        try:
+            parsed_args = parser.parse_args()
+            username = parsed_args['username']
+            dish_id = parsed_args['dish_id']
 
-        parsed_args = parser.parse_args()
-        username = parsed_args['username']
-        reviews = session.query(Review).filter(Review.username == username).all()
+            if None not in (username, dish_id): 
+                reviews = session.query(Review).filter(Review.username == username, Review.dish_id==dish_id).all()
+            elif username:
+                reviews = session.query(Review).filter(Review.username == username).all()
+            elif dish_id:
+                reviews = session.query(Review).filter(Review.dish_id == dish_id).all()
+            else:
+                raise Exception("Improper Parameters for GET request")
 
-        return reviews
+            return reviews, 200
 
-    @marshal_with(review_fields)
+        except Exception as e:
+            abort(400, message="{}".format(e))
+
+
+    @jwt_required
     def post(self):
-        parsed_args = parser.parse_args()
-        review = Review(review_id=parsed_args['review_id'], username=parsed_args['username'],
-                    rating=parsed_args['rating'], review=parsed_args['review'],
-                    dish_id=parsed_args['dish_id'])
-        session.add(review)
-        session.commit()
-        return review, 201
+        try:
+            current_user = get_jwt_identity()
+            
+            parsed_args = parser.parse_args()
+            review = Review(review_id=None, username=current_user,
+                        rating=int(parsed_args['rating']), review=parsed_args['review'],
+                        dish_id=int(parsed_args['dish_id']))
+            
+            
+            session.add(review)
+            session.commit()
+            
+            return {
+                "Message": "Review successfully made"
+            }, 201
+        except Exception as e:
+            abort(500, message="{}".format(e))
+
 
 

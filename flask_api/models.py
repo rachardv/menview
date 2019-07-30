@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 #Choice of database, if you wan't to develope flask api seperate from all other components use sqlite 
 #DB_URI = 'sqlite:///./main.db'
-#DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
+# DB_URI = 'postgresql://admin:secret@localhost:5432/menviewdb'
 DB_URI = 'postgresql://admin:secret@menview_db_1:5432/menviewdb'
 
 Base = declarative_base()
@@ -13,7 +13,7 @@ Base = declarative_base()
 class Review(Base):
     __tablename__='reviews'
     
-    review_id = Column(Integer, primary_key=True)
+    review_id = Column(Integer, primary_key=True, autoincrement=True)
     rating = Column(Integer)
     username = Column(String(20), ForeignKey("users.username"), nullable=False)
     dish_id = Column(Integer, ForeignKey("dishes.dish_id"), nullable=False)

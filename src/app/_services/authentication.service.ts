@@ -21,9 +21,9 @@ export class AuthenticationService {
   constructor(
     private http: HttpClient,
     private globals: Globals,
-    private authService: AuthService,
+    private authService: AuthService
   ) {
-    /* REPLACE USER AUTHENTICATION WITH API CALL */
+
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
     this.apiUrl = globals.apiUrl;
@@ -67,7 +67,6 @@ export class AuthenticationService {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.authService.authState.subscribe(
       user => {
-        console.log(user) //comment out later
         idToken = user["idToken"]
       })
 

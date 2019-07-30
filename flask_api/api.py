@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_cors import CORS
-from flask_restful import reqparse, abort, Api, Resource
+from flask_restful import reqparse, Api, Resource
 from models import Restaurant, User, Dish
 
 from resources.restaurant_resource import RestaurantListResource, RestaurantResource
@@ -15,7 +15,7 @@ from resources.user_resource import OauthLogin, UserRegistration, UserLogin, Tok
 
 app = Flask(__name__)
 CORS(app, origins="*", allow_headers=[
-    "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"],
+    "Content-Type", "Authorization", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "X-Auth-Token"],
     supports_credentials=True, intercept_exceptions=False)
 api = Api(app)
 jwt = JWTManager(app)
