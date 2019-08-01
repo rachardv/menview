@@ -5,37 +5,41 @@
     <div class="overlay-nav">
         <ul>
             <li class="overlay-nav-element"><a href="#" class="underline" (click)="toggleOverview()">Back to
-                    Restaurants</a></li>
+                    Search</a></li>
             <li *ngIf="show == 'dishes'"><a href="#">{{currentRestaurantName}}</a></li>
+            <li *ngIf="show == 'restaurants'"><a href="#" (click)="showAllRestaurants()">{{currentRestaurantName}}</a></li>
             <li class="overlay-nav-element" *ngIf="show == 'reviews'"><a href="#" class="underline"
                     (click)="setShow('dishes')">{{currentRestaurantName}}</a></li>
             <li *ngIf="show == 'reviews'"><a>{{currentDish.dish_name}}</a></li>
         </ul>
     </div>
 
+    <!-- RESTAURANT LIST OVERLAY -->
     <div class="overlay-content">
         <div id="restaurant-list" *ngIf="show == 'restaurants'">
-            <h2>Viewing list of all restaurants</h2>
-            <div class="row">
-                <ul style="padding: 0em; list-style-type: none;">
-                    <li *ngFor="let dish of dishList">
-                        <dish (readReview)="readReview($event)" (writeReview)="writeReview($event)"
-                            [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
-                        </dish>
-                    </li>
-                    <li *ngIf="restaurantCount == 0">
-                        <p>Sorry, we couldn't find any restaurants in our database!</p>
-                    </li>
-                </ul>
+            <h2 style="margin-bottom: 1rem;">Viewing list of all restaurants</h2>
+            <div class="">
+                    <ul class="restaurant-ul">
+                            <li *ngIf="restaurantCount === 0">
+                                <i>No restaurants found for query "{{searchKeyword}}".</i>
+                            </li>
+                            <li class="restaurant-li clickable"
+                                *ngFor="let restaurant of restaurantList">
+                                <restaurant [name]="restaurant.name" [location]="restaurant.location"
+                                    [dishcount]="restaurant.dishcount" (messageEvent)="getDishes($event)">
+                                </restaurant>
+                            </li>
+                    </ul>
             </div>
         </div>
 
+        <!-- DISHES OVERLAY -->
         <div id="dish-list" *ngIf="show == 'dishes'">
             <h2>{{currentRestaurantName}}</h2>
-            <div class="row">
+            <div class="">
                 <ul style="padding: 0em; list-style-type: none;">
                     <li *ngFor="let dish of dishList">
-                        <dish (readReview)="readReview(dish)" (writeReview)="writeReview(dish)"
+                        <dish (readReview)="readReview(dish)" (writeReview)="writeReview(dish)" [cost]="dish.cost"
                             [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
                         </dish>
                     </li>
@@ -157,7 +161,7 @@
 
         <!-- use these buttons for debug purposes -->
         <!-- <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">Test all retrieval</button> -->
-        <button class="btn-alt rounded full-width" (click)="getAllRestaurants()">View list of all restaurants</button>
+        <button class="btn-alt rounded full-width" (click)="toggleOverview(); showAllRestaurants();">View list of all restaurants</button>
         <!-- <button class="btn-alt rounded full-width" (click)="getRestaurant('mcdonalds')">Test single retrieval</button> -->
     </div>
 

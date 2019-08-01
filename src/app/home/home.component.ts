@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit {
   overview: boolean = true; // overview = first screen with google maps & restaurant search bar
   overlay: boolean = false; // overlay = view dishes and/or reviews for specific dishes
   show: string; // determines what the overlay screen is showing. can be set to 3 values: "dishes", "restaurants", "reviews".
-  menuActive: boolean = false; // TODO: refactor this. do we need this?
   
   
   /* data-bound strings to display to user */
@@ -117,7 +116,6 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.markers = [];
 
-
     this.api.getAllRestaurants().subscribe((data: {}) => {
       
       this.restaurantCount = Object.keys(data).length;
@@ -142,7 +140,29 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
 
+  showAllRestaurants() {
+    this.loading = true;
+    this.currentRestaurantName = "All Restaurants"; // used to display Navbar info
+
+    this.api.getAllRestaurants().subscribe((data: {}) => {
+
+      this.restaurantCount = Object.keys(data).length;
+      this.restaurantList = data;
+      this.setShow("restaurants");
+      this.loading = false;
+      
+
+    },
+      (error: any) => {
+        // TODO: display an error to user if restaurants are not retrieved.
+        this.restaurantCount = 0;
+        console.log("Error retrieving all restaurants!");
+        this.setShow("restaurants");
+        this.loading = false;
+      }
+    );
   }
 
   getRestaurant(query: string) {
@@ -174,9 +194,6 @@ export class HomeComponent implements OnInit {
 
     this.dishCount = 0; // reset count of dishes
 
-    if (!this.menuActive) {
-      this.toggleMenuActive();
-    }
     /*    this.dishList = this.response;*/
 
 
@@ -209,10 +226,6 @@ export class HomeComponent implements OnInit {
       lon: marker.lon,
       alpha: marker.alpha
     }
-  }
-
-  toggleMenuActive() {
-    this.menuActive = !this.menuActive;
   }
 
 //--------------------- Review related functions------------------

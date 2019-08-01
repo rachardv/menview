@@ -15,6 +15,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run the following command to deploy the application (front-end served through nginx) with docker-compose:
 `docker-compose -f docker-compose-prod.yml up -d --build`
 
+To instantiate DB with sample data, use the command `bash db_init.sh`. When prompted, use password `secret`.
+
 You can access the app at [http://localhost:8080/](http://localhost:8080/). You will be redirected to `http://localhost:8080/#/` as this ensures proper page loads for Angular routes on nginx.
 
 ### For development:
