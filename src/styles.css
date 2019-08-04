@@ -11,7 +11,6 @@ app-root {
     padding-top: 0rem;
 }
 
-
 /* HTML ELEMENTS */
 
 html, body {
@@ -160,6 +159,19 @@ nav, footer {
     box-shadow: 3px 3px 5px -2px rgba(50, 50, 50, 0.5);
 }
 
+.recommended > div {
+    border: 1px solid rgba(255, 149, 0, 1);
+}
+
+.recommended-spacer > div {
+    margin-bottom: 2rem;
+}
+
+.recommended-spacer:after {
+    content: "Other dishes:";
+    font-weight: bold;
+}
+
 #site-title {
     margin-right: 1rem;
     color: white;
@@ -259,6 +271,7 @@ nav, footer {
 }
 
 .agm-map-container-inner {
+    /* ensure responsive map */
     width: 100% !important;
 }
 
@@ -310,7 +323,7 @@ nav, footer {
     border: 1px solid rgba(200, 200, 200, 0.8);
     width: 100%;
     padding: 0.5rem 1rem;
-    margin: 0rem 0rem 1rem 0rem;
+    margin: 1rem 0rem 1rem 0rem;
     opacity: 1;
     text-align: left;
     background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 100%);
@@ -467,11 +480,7 @@ nav, footer {
     margin-bottom: 0.5rem;
 }
 
-
-
 /* responsive design + media queries */
-
-
 .res-hide {
     display: initial;
 }   
@@ -481,6 +490,11 @@ nav, footer {
 }
 
 @media only screen and (max-width: 700px) {
+    .split-large {
+        width: 100%;
+        max-width: 100%;
+    }
+
     .res-show {
         display: initial;
     }

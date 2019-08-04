@@ -38,9 +38,9 @@
             <h2>{{currentRestaurantName}}</h2>
             <div class="">
                 <ul style="padding: 0em; list-style-type: none;">
-                    <li *ngFor="let dish of dishList">
-                        <dish (readReview)="readReview(dish)" (writeReview)="writeReview(dish)" [cost]="dish.cost"
-                            [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
+                    <li *ngIf="currentUser" style="margin-bottom: 1rem;">Top 3 dishes for <b>{{currentUser.username}}</b>:</li>
+                    <li *ngFor="let dish of dishList; let i = index">
+                        <dish [ngClass]="{'recommended': i &lt;= 2 && currentUser, 'recommended-spacer': i==2 && currentUser}" (readReview)="readReview(dish)" (writeReview)="writeReview(dish)" [cost]="dish.cost"               [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
                         </dish>
                     </li>
                     <li *ngIf="dishCount == 0">
@@ -116,15 +116,19 @@
     <div style="margin: 0rem 0rem 2rem 0rem">
         <div class="rounded shadow">
             <div class="full-width center">
-                <input id="search-bar" class="input-bar rounded" type="text" [(ngModel)]="searchKeyword"
+                <input id="search-bar" class="input-bar rounded res-hide" type="text" [(ngModel)]="searchKeyword"
                     placeholder="Type a restaurant name here, or click one on the map!" />
+            </div>
+
+            <div class="res-show">
+                <p class="content-card rounded shadow">Select a restaurant on the map!</p>
             </div>
         </div>
     </div>
 
 
     <div class="content-card rounded shadow">
-        <div class="soft-transition width-hidden" [ngClass]="{'split-small': searchKeyword !== ''}"
+        <div class="soft-transition width-hidden res-hide" [ngClass]="{'split-small': searchKeyword !== ''}"
             style="float: left;">
             <ul class="restaurant-ul">
                 <li style="width: 100%; margin: 0.5em 0.5em 1em 0.5em; padding-right: 1rem;"
@@ -146,7 +150,7 @@
             style="float: right;" [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="12">
             <span>Loading...</span>
             <agm-marker *ngFor="let r of restaurantList" [latitude]="r.lat" [longitude]="r.lon" [label]="r.name"
-                [opacity]="r.alpha" (markerClick)="searchKeyword = r.name">
+                [opacity]="r.alpha" (markerClick)="handleMarkerClick(r.name)">
             </agm-marker>
         </agm-map>
 

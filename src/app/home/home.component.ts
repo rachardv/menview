@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
 
 
   reviewForm: FormGroup;
+  currentUser: any; // track current user
 
   /* controls whether loading "spinner" is shown */
   loading: boolean = false;
@@ -152,7 +153,6 @@ export class HomeComponent implements OnInit {
       this.restaurantList = data;
       this.setShow("restaurants");
       this.loading = false;
-      
 
     },
       (error: any) => {
@@ -191,7 +191,7 @@ export class HomeComponent implements OnInit {
     console.log("Loading restaurant " + $event);
     this.loading = true;
     this.currentRestaurantName = $event;
-
+    this.currentUser = null; // clear currentUser
     this.dishCount = 0; // reset count of dishes
 
     /*    this.dishList = this.response;*/
@@ -203,6 +203,8 @@ export class HomeComponent implements OnInit {
       this.dishCount = Object.keys(data).length;
 
       console.log(this.dishCount + " dishes retrieved.");
+
+      this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
       this.dishList = data;
       this.setShow("dishes");
@@ -226,6 +228,14 @@ export class HomeComponent implements OnInit {
       lon: marker.lon,
       alpha: marker.alpha
     }
+  }
+
+  handleMarkerClick(markerName: string) {
+    this.searchKeyword = markerName;
+
+    this.toggleOverview();
+    this.getDishes(markerName);
+
   }
 
 //--------------------- Review related functions------------------
