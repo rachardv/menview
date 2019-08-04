@@ -2,26 +2,43 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.3.
 
-# Known Issues
+# For CMPT470 (Deployment & Features):
 
-+ Occasional HTTP 500 returned from server after repeated GET requests in quick succession.
-+ Text overlap of restaurant list cards when resizing the window.
+Run the following in sequential order after they complete.
 
++ `docker-compose -f docker-compose-prod.yml up -d --build`
++ `bash db_init.sh`, use password `secret` when prompted
 
-# Deployment Instructions
+URL: [http://localhost:4201/](http://localhost:4201/)
 
-## For production:
+Credentials:
+You may write reviews after logging in with your Google account (via OAuth) or by creating a local user ID through the register screen.
+
+What's working:
++ API calls between Angular+nginx and Flask+PostgreS in both production and development builds
++ Recommendation system
++ OAuth and JWT tokens for authentication
++ Google Maps API integration
++ Media queries for smaller screen sizes
+
+What's not working:
++ Error handling on 
++ Occasional HTTP 500's if you spam some buttons (we've tried to limit this via the front-end using loading spinners)
+
+# Deployment Instructions: Detailed
+
+### For production:
 
 Run the following command to deploy the application (front-end served through nginx) with docker-compose:
 `docker-compose -f docker-compose-prod.yml up -d --build`
 
 To instantiate DB with sample data, use the command `bash db_init.sh`. When prompted, use password `secret`.
 
-You can access the app at [http://localhost:8080/](http://localhost:8080/). You will be redirected to `http://localhost:8080/#/` as this ensures proper page loads for Angular routes on nginx.
+You can access the app at [http://localhost:4201/](http://localhost:4201/). You will be redirected to `http://localhost:4201/#/` as this ensures proper page loads for Angular routes on nginx.
 
 ### For development:
 
-Install Angular CLI 8.0.3 on your machine:
+Install Angular CLI 8.0.3 on your machine (optional):
 `npm install -g @angular/cli@8.0.3`
 
 Run the following bash command (may take some time):
@@ -98,9 +115,6 @@ Send POST with token as "Authroization" header.
 1. Add the python decorator "@jwt_required" to flask resource. 
 Sample can be seen in Secret Resource in user_resource.py
 
-
-
-
 # Troubleshooting
 
 **docker-compose:**
@@ -120,35 +134,9 @@ Sample can be seen in Secret Resource in user_resource.py
 
 3. Run ng serve: `ng serve`
 
-
 Resources Used & Attribution
 ============================
 
 Dockerization of the Angular layer uses the following tutorial and modifies code provided by [Michael Herman](https://mherman.org/blog/dockerizing-an-angular-app/) (development) and [Aslan Vatsaev](https://dev.to/avatsaev/create-efficient-angular-docker-images-with-multi-stage-builds-1f3n) (production).
 
 Template code for authentication services and back-end integration is originally written by [Jason Watmore](https://jasonwatmore.com/post/2019/06/10/angular-8-user-registration-and-login-example-tutorial). The project repository can be cloned from [here](https://github.com/cornflourblue/angular-8-registration-login-example).
-
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

@@ -1,5 +1,0 @@
-- Please see README.md (in repo's root directory) to see deployment instructions.
-- Most of the application's routes and interfaces are working with local data. Integration between web server and app layer is not entirely done yet. Feel free to test to see look/feel
-- Recommendation system in the backend is functioning, albeit a bit simplified
-- Flask API is set up
-- One of our members is working on OAuth and has not published any commits yet due to trying to figure that part out
