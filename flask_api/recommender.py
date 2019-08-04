@@ -35,7 +35,7 @@ def recommend(restaurant_dishes, reviewed_dishes):
                 max_similarity = cos_sim_matrix[i][j]
                 most_similar_dish = j
        
-        most_similar_rating = reviewed_dishes[most_similar_dish][1].rating
+        most_similar_rating = ( reviewed_dishes[most_similar_dish][1].rating - 3 )
         dish_score = max_similarity*most_similar_rating
         restaurant_dish_scores.append([i, dish_score])
 

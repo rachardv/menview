@@ -16,7 +16,6 @@ user_fields = {
     'username': fields.String,
     'email': fields.String,
     'password': fields.String
-#    'file': fields.String
 }
 
 parser = reqparse.RequestParser()
@@ -26,7 +25,6 @@ parser.add_argument('username')
 parser.add_argument('email')
 parser.add_argument('password')
 parser.add_argument('idToken')
-#parser.add_argument('file')
 
 class UserResource(Resource):
     @marshal_with(user_fields)

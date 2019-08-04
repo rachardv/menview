@@ -38,7 +38,7 @@
             <h2>{{currentRestaurantName}}</h2>
             <div class="">
                 <ul style="padding: 0em; list-style-type: none;">
-                    <li *ngIf="currentUser" style="margin-bottom: 1rem;">Top 3 dishes for <b>{{currentUser.username}}</b>:</li>
+                    <li *ngIf="currentUser && dishCount > 0" style="margin-bottom: 1rem;">Top 3 dishes for <b>{{currentUser.username}}</b>:</li>
                     <li *ngFor="let dish of dishList; let i = index">
                         <dish [ngClass]="{'recommended': i &lt;= 2 && currentUser, 'recommended-spacer': i==2 && currentUser}" (readReview)="readReview(dish)" (writeReview)="writeReview(dish)" [cost]="dish.cost"               [name]="dish.dish_name" [description]="dish.dish_description" [rating]="dish.dish_rating">
                         </dish>

@@ -56,7 +56,7 @@ export class RestaurantService {
       return this.http.get(endpoint + 'dishes/?restaurant_name=' + query).pipe(map(this.extractData));
     } else {
       console.log("retrieving dishes for " + this.currentUser.username);
-      return this.http.get(endpoint + 'dishes/?restaurant_name=' + query + '&username=' + this.currentUser).pipe(map(this.extractData));
+      return this.http.get(endpoint + 'dishes/?restaurant_name=' + query + '&username=' + this.currentUser.username).pipe(map(this.extractData));
     }
 
   }

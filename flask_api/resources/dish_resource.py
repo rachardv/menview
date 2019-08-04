@@ -63,9 +63,12 @@ class DishListResource(Resource):
         restaurant_name = parsed_args['restaurant_name']
         dishes = session.query(Dish).filter(Dish.restaurant_name == restaurant_name).all()
 
-        # return recommended dish's back if a user is specified AND they have atleast one review  
+        # return recommended dish's back if:
+        #       a user is specified 
+        #       AND they have atleast one review
+        #       AND the restaurant contains atleast one dish
         username = parsed_args['username']
-        if(username != 'None'):
+        if(username != 'None' and dishes):
             reviewed_dishes = session.query(Dish, Review).join(Review).filter(Review.username == username).all()
             if reviewed_dishes:
                 dishes = recommend(dishes, reviewed_dishes)
