@@ -4,7 +4,7 @@ flask-cors==3.0.8
 psycopg2>=2.7,<3.0
 Jinja2==2.9.6
 SQLAlchemy==1.1.13
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 nltk
 rake-nltk
 scikit-learn[alldeps]
